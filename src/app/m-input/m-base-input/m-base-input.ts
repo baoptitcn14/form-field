@@ -29,22 +29,22 @@ export class MBaseInput implements ControlValueAccessor {
             this.onChange(this.value);
     }
 
-    baseValidate(itemData: Item, controlValue: string) {
+    baseValidate(itemData: Item, controlValue: any) {
         let errors: Errors | undefined;
         const value = controlValue;
 
         if (itemData.required) {
-            if (value == null || value == undefined || value == '') {
+            if (value !== null && value !== undefined && value !== "") {
+                delete errors?.required;
+                this.deleteErrorByKey('required');
+            } else {
                 if (!errors) errors = { required: undefined };
                 errors.required = 'Không bỏ trống!';
                 this.addError('required', 'Không bỏ trống!');
-            } else {
-                delete errors?.required;
-                this.deleteErrorByKey('required');
             }
         }
 
-        if (itemData.regex) {
+        if (itemData.type == 'text' && itemData.regex) {
             let regex = new RegExp(itemData.regex);
             const test = regex.test(value);
             if (!test) {

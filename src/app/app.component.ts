@@ -55,11 +55,11 @@ export class AppComponent {
         code: 'coddef4',
         index: 0,
         name: 'f141',
-        type: 'text',
+        type: 'date',
         value: undefined,
-        required: true,
         disabled: false,
-        class: 'col-12 col-md-6'
+        class: 'col-12 col-md-6',
+        required: true
       }
     ]
   }]
