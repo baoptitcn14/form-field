@@ -1,0 +1,57 @@
+<ng-container *ngIf="itemData?.icon">
+    <label for="{{ itemData?.id }}" class="form-label">{{
+      itemData?.name
+    }}</label>
+  
+    <div class="input-group has-validation">
+      <span class="input-group-text">
+        <i class="{{ itemData?.icon }}"></i>
+      </span>
+      <input
+        type="number"
+        min="{{ itemData?.min }}"
+        max="{{ itemData?.max }}"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
+        [disabled]="isDisabled"
+        [(ngModel)]="value"
+        (ngModelChange)="handler()"
+        id="{{ itemData?.id }}"
+      />
+  
+      <!-- hien thi loi -->
+      <small class="invalid-feedback" *ngIf="errors?.required">
+        {{ errors?.required }}
+      </small>
+      <small class="invalid-feedback" *ngIf="errors?.regex">
+        {{ errors?.regex }}
+      </small>
+      <small hidden></small>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="!itemData?.icon">
+    <label for="{{ itemData?.id }}" class="form-label">{{
+      itemData?.name
+    }}</label>
+  
+    <input
+      type="number"
+      min="{{ itemData?.min }}"
+      max="{{ itemData?.max }}"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
+      [disabled]="isDisabled"
+      [(ngModel)]="value"
+      (ngModelChange)="handler()"
+      id="{{ itemData?.id }}"
+    />
+  
+    <!-- hien thi loi -->
+    <!-- hien thi loi -->
+    <small class="invalid-feedback" *ngFor="let error of listErrors">
+      {{ error.message }}
+    </small>
+    <small hidden></small>
+  </ng-container>
+  

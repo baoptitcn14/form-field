@@ -1,0 +1,28 @@
+<ng-container [ngSwitch]="itemData?.type">
+  <!-- TEXT -->
+  <ng-container *ngSwitchCase="'text'">
+    <m-text
+      [itemData]="itemData"
+      [(ngModel)]="itemData.value"
+      [disabled]="itemData.disabled"
+    ></m-text>
+  </ng-container>
+
+   <!-- NUMBER -->
+   <ng-container *ngSwitchCase="'number'">
+    <m-number
+      [itemData]="itemData"
+      [(ngModel)]="itemData.value"
+      [disabled]="itemData.disabled"
+    ></m-number>
+  </ng-container>
+
+   <!-- DATE -->
+   <ng-container *ngSwitchCase="'date'">
+    <!-- <m-date
+      [itemData]="itemData"
+      [(ngModel)]="itemData.value"
+      [disabled]="itemData.disabled"
+    ></m-date> -->
+  </ng-container>
+</ng-container>
