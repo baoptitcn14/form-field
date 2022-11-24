@@ -19,6 +19,7 @@ export class Item {
     disabled?: boolean = false;
     required?: boolean = false;
     icon?: string;
+    valueRefIds?: { id: string, key: string | undefined }[];
     // text | number
     regex?: RegExp;
     // text | number
@@ -27,8 +28,8 @@ export class Item {
     min?: number;
     max?: number;
     // select
-    isHasSelectAll?: boolean;
-    referenceIds?: { id: string, key: string }[];
+    selectAll?: boolean;
+    dataSourceRefIds?: { id: string, key: string }[];
     // select | table
     search?: boolean;
     dataSource?: any[] | undefined;

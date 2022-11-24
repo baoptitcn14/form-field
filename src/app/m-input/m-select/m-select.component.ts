@@ -40,7 +40,7 @@ export class MSelectComponent extends MBaseInput implements Validator {
       this.value = undefined;
       this.handler();
 
-      if (this.itemData?.referenceIds)
+      if (this.itemData?.dataSourceRefIds)
         this.referenceIdsEmitter.emit(this.itemData);
     }
   }
@@ -54,7 +54,7 @@ export class MSelectComponent extends MBaseInput implements Validator {
 
     this.handler();
 
-    if (this.itemData?.referenceIds)
+    if (this.itemData?.dataSourceRefIds)
       this.referenceIdsEmitter.emit(this.itemData);
   }
 
@@ -71,7 +71,7 @@ export class MSelectComponent extends MBaseInput implements Validator {
     } else {
       this.itemData?.dataSource?.forEach(e => e.active = false);
     }
-    return item ? item.name : (this.itemData?.isHasSelectAll ? 'Tất cả' : '');
+    return item ? item.name : (this.itemData?.selectAll ? 'Tất cả' : '');
   }
 
 }

@@ -40,7 +40,7 @@
       <a
         class="dropdown-item"
         [ngClass]="{ active: !value }"
-        *ngIf="itemData?.isHasSelectAll"
+        *ngIf="itemData?.selectAll"
         (click)="onSelectAll()"
       >
         Tất cả

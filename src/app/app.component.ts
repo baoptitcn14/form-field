@@ -37,8 +37,9 @@ export class AppComponent {
           }
         ],
         class: 'col-12 col-md-6',
-        referenceIds: [{ id: 'f2', key: 'refId' }],
-        isHasSelectAll: true
+        valueRefIds: [{ id: 'f6', key: undefined }],
+        dataSourceRefIds: [{ id: 'f2', key: 'refId' }],
+        selectAll: true
       },
       {
         id: 'f2',
@@ -84,7 +85,8 @@ export class AppComponent {
         required: true,
         disabled: false,
         class: 'col-12 col-md-6',
-        search: true
+        search: true,
+        valueRefIds: [{ id: 'f6', key: undefined }]
       },
       {
         id: 'f3',
@@ -96,7 +98,8 @@ export class AppComponent {
         required: true,
         class: 'col-12 col-md-6',
         min: 0,
-        max: 2
+        max: 2,
+        valueRefIds: [{ id: 'f6', key: undefined }]
       },
       {
         id: 'f4',
@@ -161,7 +164,7 @@ export class AppComponent {
         ]
       }
     ]
-  }]
+  }];
 
   ac(obj: FormField) {
     console.log(obj);

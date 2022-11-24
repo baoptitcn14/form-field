@@ -20,8 +20,8 @@ export class FormFieldComponent implements OnInit {
   }
 
   onReferenceIdsEmitter(itemData: Item) {
-    if (itemData.referenceIds) {
-      itemData.referenceIds.forEach(e => {
+    if (itemData.dataSourceRefIds) {
+      itemData.dataSourceRefIds.forEach(e => {
         let item = this.objectForm?.items?.find(x => x.id == e.id);
 
         if (item) {
