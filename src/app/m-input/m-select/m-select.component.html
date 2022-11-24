@@ -1,1 +1,94 @@
-<p>m-select works!</p>
+<label for="{{ itemData?.id }}" class="form-label">
+  {{ itemData?.name }}
+</label>
+
+<div class="input-group has-validation navbar p-0">
+  <div class="input-group-prepend" *ngIf="itemData?.icon">
+    <span class="input-group-text">
+      <i class="{{ itemData?.icon }}"></i>
+    </span>
+  </div>
+
+  <div class="dropdown">
+    <input
+      type="text"
+      data-toggle="dropdown"
+      aria-expanded="false"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': errors,
+        'is-valid': !errors,
+        'has-icon': itemData?.icon
+      }"
+      [disabled]="isDisabled"
+      readonly
+      [value]="displayValue"
+      id="{{ itemData?.id }}"
+    />
+
+    <div class="dropdown-menu w-100">
+      <a class="dropdown-item" *ngIf="itemData?.search">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="search" />
+        </div>
+      </a>
+      <a
+        class="dropdown-item"
+        [ngClass]="{ active: !value }"
+        *ngIf="itemData?.isHasSelectAll"
+        (click)="onSelectAll()"
+      >
+        Tất cả
+      </a>
+      <a
+        *ngFor="let option of listOption"
+        class="dropdown-item"
+        [ngClass]="{ active: option.active}"
+        (click)="onSelect(option)"
+        [innerHTML]="option.name | highlighter: search"
+      ></a>
+    </div>
+  </div>
+
+  <!-- fix css -->
+  <span hidden></span>
+  <!-- end fix css -->
+
+  <div class="input-group-append" data-toggle="dropdown">
+    <span class="input-group-text">
+      <i class="fa fa-caret-down"></i>
+    </span>
+  </div>
+
+  <!-- hien thi loi -->
+  <small class="invalid-feedback" *ngFor="let error of listErrors">
+    {{ error.message }}
+  </small>
+</div>
+<!-- 
+<div class="navbar">
+  <div class="dropdown">
+    <input
+      type="text"
+      data-toggle="dropdown"
+      aria-expanded="false"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
+      [disabled]="isDisabled"
+      [(ngModel)]="value"
+      (ngModelChange)="handler()"
+      id="{{ itemData?.id }}"
+    />
+
+    <div class="dropdown-menu">
+      <a *ngFor="let option of itemData.dataSource" class="dropdown-item">
+        {{ option.name }}
+      </a>
+    </div>
+  </div>
+</div> -->

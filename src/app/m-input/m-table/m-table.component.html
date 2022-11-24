@@ -1,1 +1,16 @@
-<p>m-table works!</p>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover table-sm">
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col" *ngFor="let header of listHeader">{{ header.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listData">
+        <td *ngFor="let header of listHeader">
+          {{ data[header.key] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

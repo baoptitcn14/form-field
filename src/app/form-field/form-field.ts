@@ -14,16 +14,25 @@ export class Item {
     name: string | undefined;
     code?: string | undefined;
     type: "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | undefined;
-    dataSource?: any[] | undefined;
     value: string | number | Date | undefined;
-    class?: string | undefined;
-    referenceIds?: string[] | undefined;
+    class?: string;
     disabled?: boolean = false;
     required?: boolean = false;
-    regex?: RegExp;
     icon?: string;
+    // text | number
+    regex?: RegExp;
+    // text | number
+    formular?: string;
+    // number
     min?: number;
     max?: number;
+    // select
+    isHasSelectAll?: boolean;
+    referenceIds?: { id: string, key: string }[];
+    // select | table
+    search?: boolean;
+    dataSource?: any[] | undefined;
+    _dataSource?: any[] | undefined;
 }
 
 export class Errors {

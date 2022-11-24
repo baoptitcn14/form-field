@@ -8,8 +8,8 @@
     ></m-text>
   </ng-container>
 
-   <!-- NUMBER -->
-   <ng-container *ngSwitchCase="'number'">
+  <!-- NUMBER -->
+  <ng-container *ngSwitchCase="'number'">
     <m-number
       [itemData]="itemData"
       [(ngModel)]="itemData.value"
@@ -17,12 +17,27 @@
     ></m-number>
   </ng-container>
 
-   <!-- DATE -->
-   <ng-container *ngSwitchCase="'date'">
+  <!-- DATE -->
+  <ng-container *ngSwitchCase="'date'">
     <m-date
       [itemData]="itemData"
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
     ></m-date>
+  </ng-container>
+
+  <!-- SELECT -->
+  <ng-container *ngSwitchCase="'select'">
+    <m-select
+      [itemData]="itemData"
+      [(ngModel)]="itemData.value"
+      [disabled]="itemData.disabled"
+      (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
+    ></m-select>
+  </ng-container>
+
+  <!-- TABLE -->
+  <ng-container *ngSwitchCase="'table'">
+    <m-table [itemData]="itemData"></m-table>
   </ng-container>
 </ng-container>

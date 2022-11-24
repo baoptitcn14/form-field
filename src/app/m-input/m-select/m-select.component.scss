@@ -1,0 +1,45 @@
+.navbar {
+    align-items: initial;
+
+    .dropdown {
+        flex: auto;
+
+        > input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &.has-icon {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        .dropdown-menu {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}
+
+:host(::ng-deep) {
+    .dropdown-menu {
+        .dropdown-item {
+            .highlighted-text {
+                background-color: violet;
+        
+                span:not(:has(.highlighted-text)) {
+                    background-color: #ffffff;
+                }
+            }
+
+            &.active {
+                .highlighted-text {
+                    span:not(:has(.highlighted-text)) {
+                        background-color: #007bff;
+                    }
+                }
+            }
+        }
+    }
+}
+

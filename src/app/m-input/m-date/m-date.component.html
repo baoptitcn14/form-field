@@ -3,18 +3,32 @@
 </label>
 
 <div class="input-group has-validation">
+  <div class="input-group-prepend" (click)="picker.open()">
+    <span class="input-group-text">
+      <i class="fa fa-calendar"></i>
+    </span>
+  </div>
 
-  <input type="text" class="form-control" [matDatepicker]="picker"
-    [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }" [disabled]="isDisabled" [(ngModel)]="value"
-    (ngModelChange)="handler()" id="{{ itemData?.id }}">
+  <input
+    type="text"
+    class="form-control"
+    readonly
+    (click)="picker.open()"
+    [matDatepicker]="picker"
+    [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
+    [disabled]="isDisabled"
+    [(ngModel)]="value"
+    (ngModelChange)="handler()"
+    id="{{ itemData?.id }}"
+  />
 
   <!-- fix css -->
   <span hidden></span>
   <!-- end fix css -->
 
-  <div class="input-group-append" (click)="picker.open()">
+  <div class="input-group-append" (click)="clear()">
     <span class="input-group-text">
-      <i class="fa fa-calendar"></i>
+      <i class="fa fa-remove"></i>
     </span>
   </div>
 

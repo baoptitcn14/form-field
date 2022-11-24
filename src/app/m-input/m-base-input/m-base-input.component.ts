@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from 'src/app/form-field/form-field';
 
 @Component({
@@ -9,10 +9,15 @@ import { Item } from 'src/app/form-field/form-field';
 export class MBaseInputComponent implements OnInit {
 
   @Input() itemData: Item | any;
+  @Output() referenceIdsEmitter = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onReferenceIdsEmitter(itemData: Item) {
+    this.referenceIdsEmitter.emit(itemData);
   }
 
 }

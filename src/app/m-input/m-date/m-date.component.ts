@@ -28,4 +28,10 @@ export class MDateComponent extends MBaseInput implements Validator {
     this.errors = this.baseValidate(this.itemData, control.value);
     return this.errors ? this.errors : null;
   }
+
+  clear() {
+    if (!this.value) return;
+    this.value = undefined;
+    this.handler();
+  }
 }

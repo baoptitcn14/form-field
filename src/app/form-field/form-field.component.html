@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row {{ objectForm?.class }}">
     <ng-container *ngFor="let item of objectForm?.items">
-      <m-base-input class="{{ item?.class }}" [itemData]="item"></m-base-input>
+      <m-base-input class="{{ item?.class }} mb-3" (referenceIdsEmitter)="onReferenceIdsEmitter($event)" [itemData]="item"></m-base-input>
     </ng-container>
   </div>
 </div>
