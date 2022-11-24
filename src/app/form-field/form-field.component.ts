@@ -36,4 +36,10 @@ export class FormFieldComponent implements OnInit {
     }
   }
 
+  onFormularEmitter(itemData: Item) {
+    if (itemData.formular) {
+      console.log(itemData.formular);
+    }
+  }
+
 }

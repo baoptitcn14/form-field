@@ -23,6 +23,8 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 export class MTextComponent extends MBaseInput implements Validator {
   @Input() itemData: Item | any;
   errors: Errors | undefined;
+  appendValue: string | undefined;
+  prependValue: string | undefined;
 
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);

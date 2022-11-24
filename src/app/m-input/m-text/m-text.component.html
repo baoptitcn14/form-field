@@ -1,7 +1,7 @@
 <ng-container *ngIf="itemData?.icon">
   <label for="{{ itemData?.id }}" class="form-label">{{
     itemData?.name
-    }}</label>
+  }}</label>
 
   <div class="input-group has-validation">
     <div class="input-group-prepend">
@@ -9,8 +9,17 @@
         <i class="{{ itemData?.icon }}"></i>
       </span>
     </div>
-    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
-      [disabled]="isDisabled" [(ngModel)]="value" (ngModelChange)="handler()" id="{{ itemData?.id }}" />
+    <input type="text" class="form-control" readonly [value]="prependValue" />
+    <input
+      type="text"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
+      [disabled]="isDisabled"
+      [(ngModel)]="value"
+      (ngModelChange)="handler()"
+      id="{{ itemData?.id }}"
+    />
+    <input type="text" class="form-control" readonly [value]="appendValue" />
 
     <!-- hien thi loi -->
     <small class="invalid-feedback" *ngFor="let error of listErrors">
@@ -22,10 +31,17 @@
 <ng-container *ngIf="!itemData?.icon">
   <label for="{{ itemData?.id }}" class="form-label">{{
     itemData?.name
-    }}</label>
+  }}</label>
 
-  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
-    [disabled]="isDisabled" [(ngModel)]="value" (ngModelChange)="handler()" id="{{ itemData?.id }}" />
+  <input
+    type="text"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
+    [disabled]="isDisabled"
+    [(ngModel)]="value"
+    (ngModelChange)="handler()"
+    id="{{ itemData?.id }}"
+  />
 
   <!-- hien thi loi -->
   <small class="invalid-feedback" *ngFor="let error of listErrors">

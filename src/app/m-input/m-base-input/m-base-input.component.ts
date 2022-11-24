@@ -10,6 +10,7 @@ export class MBaseInputComponent implements OnInit {
 
   @Input() itemData: Item | any;
   @Output() referenceIdsEmitter = new EventEmitter();
+  @Output() formularEmitter = new EventEmitter();
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class MBaseInputComponent implements OnInit {
 
   onReferenceIdsEmitter(itemData: Item) {
     this.referenceIdsEmitter.emit(itemData);
+  }
+
+  onFormularEmitter(itemData: Item) {
+    this.formularEmitter.emit(itemData);
   }
 
 }
