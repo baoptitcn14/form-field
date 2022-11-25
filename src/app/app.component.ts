@@ -37,7 +37,7 @@ export class AppComponent {
           }
         ],
         class: 'col-12 col-md-6',
-        valueRefIds: [{ id: 'f6', key: undefined }],
+        formulaRefIds: ['f6'],
         dataSourceRefIds: [{ id: 'f2', key: 'refId' }],
         selectAll: true
       },
@@ -86,7 +86,7 @@ export class AppComponent {
         disabled: false,
         class: 'col-12 col-md-6',
         search: true,
-        valueRefIds: [{ id: 'f6', key: undefined }]
+        formulaRefIds: ['f6']
       },
       {
         id: 'f3',
@@ -99,7 +99,7 @@ export class AppComponent {
         class: 'col-12 col-md-6',
         min: 0,
         max: 2,
-        valueRefIds: [{ id: 'f6', key: undefined }]
+        formulaRefIds: ['f6']
       },
       {
         id: 'f4',
@@ -110,7 +110,8 @@ export class AppComponent {
         value: undefined,
         disabled: false,
         class: 'col-12 col-md-6',
-        required: true
+        required: true,
+        formulaRefIds: ['f6']
       },
       {
         id: 'f6',
@@ -119,10 +120,19 @@ export class AppComponent {
         name: 'Địa chỉ',
         type: 'text',
         value: undefined,
-        disabled: false,
+        disabled: true,
         class: 'col-12 col-md-12',
-        required: true,
-        formular: 'f3+f2+f1'
+        formular: 'f4+f3+f555+f2+f1'
+      },
+      {
+        id: 'f555',
+        code: 'coddef555',
+        index: 92,
+        name: 'text',
+        type: 'text',
+        value: undefined,
+        class: 'col-12 col-md-12',
+        formulaRefIds: ['f6']
       },
       {
         id: 'f5',

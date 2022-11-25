@@ -1,10 +1,10 @@
+import { EventEmitter, Output } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
-import { Errors, Item } from "src/app/form-field/form-field";
+import { Errors, FormulaEmitterInput, Item } from "src/app/form-field/form-field";
 
 export class MBaseInput implements ControlValueAccessor {
-
     isDisabled: boolean = false;
-    value: string | undefined;
+    value: string | number | Date | undefined;
     listErrors: { key: string, message: string }[] = [];
 
     onChange: ((data: any) => void) | undefined;
@@ -25,8 +25,17 @@ export class MBaseInput implements ControlValueAccessor {
     }
 
     handler() {
-        if (this.onChange)
+        if (this.onChange) {
             this.onChange(this.value);
+        }
+    }
+
+    protected proccessFormulaRefIds(formulaRefIds: string[], id: string | undefined, emitter?: EventEmitter<any>) {
+        emitter?.emit({
+            formulaRefIds: formulaRefIds,
+            id: id,
+            value: this.value
+        } as FormulaEmitterInput);
     }
 
     protected baseValidate(itemData: Item | undefined, controlValue: any) {

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { Errors, Item } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
@@ -22,12 +22,19 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 })
 export class MTextComponent extends MBaseInput implements Validator {
   @Input() itemData: Item | any;
+  @Output() formulaIdsEmitter = new EventEmitter();
+
   errors: Errors | undefined;
-  appendValue: string | undefined;
-  prependValue: string | undefined;
 
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
     return this.errors ? this.errors : null;
+  }
+
+  onChangeValue(): void {
+    this.handler();
+
+    if (this.itemData?.formulaRefIds)
+      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.formulaIdsEmitter);
   }
 }

@@ -5,6 +5,7 @@
       [itemData]="itemData"
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
+      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
     ></m-text>
   </ng-container>
 
@@ -14,6 +15,7 @@
       [itemData]="itemData"
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
+      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
     ></m-number>
   </ng-container>
 
@@ -23,6 +25,7 @@
       [itemData]="itemData"
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
+      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
     ></m-date>
   </ng-container>
 
@@ -33,6 +36,7 @@
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
       (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
+      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
     ></m-select>
   </ng-container>
 

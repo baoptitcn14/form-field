@@ -25,6 +25,7 @@ export class MSelectComponent extends MBaseInput implements Validator {
 
   @Input() itemData: Item | undefined;
   @Output() referenceIdsEmitter = new EventEmitter();
+  @Output() formulaIdsEmitter = new EventEmitter();
 
   errors: Errors | undefined;
   search: string | undefined;
@@ -39,6 +40,9 @@ export class MSelectComponent extends MBaseInput implements Validator {
       this.itemData?.dataSource?.forEach(e => e.active = false);
       this.value = undefined;
       this.handler();
+
+      if (this.itemData?.formulaRefIds)
+        this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.formulaIdsEmitter);
 
       if (this.itemData?.dataSourceRefIds)
         this.referenceIdsEmitter.emit(this.itemData);
@@ -56,6 +60,10 @@ export class MSelectComponent extends MBaseInput implements Validator {
 
     if (this.itemData?.dataSourceRefIds)
       this.referenceIdsEmitter.emit(this.itemData);
+
+    if (this.itemData?.formulaRefIds)
+      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.formulaIdsEmitter);
+
   }
 
   get listOption() {

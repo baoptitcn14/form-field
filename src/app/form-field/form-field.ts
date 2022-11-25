@@ -17,9 +17,10 @@ export class Item {
     value: string | number | Date | undefined;
     class?: string;
     disabled?: boolean = false;
+    readonly?: boolean = false;
     required?: boolean = false;
     icon?: string;
-    valueRefIds?: { id: string, key: string | undefined }[];
+    formulaRefIds?: string[];
     // text | number
     regex?: RegExp;
     // text | number
@@ -41,5 +42,11 @@ export class Errors {
     regex?: string | undefined;
     min?: string | undefined;
     max?: string | undefined;
+}
+
+export class FormulaEmitterInput {
+    formulaRefIds: string[] | undefined;
+    value: string | number | Date | undefined;
+    id: string | undefined;
 }
 

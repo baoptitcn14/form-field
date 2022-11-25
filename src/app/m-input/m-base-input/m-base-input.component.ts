@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Item } from 'src/app/form-field/form-field';
+import { FormulaEmitterInput, Item } from 'src/app/form-field/form-field';
 
 @Component({
   selector: 'm-base-input',
@@ -10,7 +10,7 @@ export class MBaseInputComponent implements OnInit {
 
   @Input() itemData: Item | any;
   @Output() referenceIdsEmitter = new EventEmitter();
-  @Output() formularEmitter = new EventEmitter();
+  @Output() formulaRefIdsEmitter = new EventEmitter();
 
   constructor() { }
 
@@ -21,8 +21,8 @@ export class MBaseInputComponent implements OnInit {
     this.referenceIdsEmitter.emit(itemData);
   }
 
-  onFormularEmitter(itemData: Item) {
-    this.formularEmitter.emit(itemData);
+  onFormulaIdsEmitter(event: FormulaEmitterInput) {
+    this.formulaRefIdsEmitter.emit(event);
   }
 
 }
