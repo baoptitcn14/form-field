@@ -59,7 +59,33 @@ export class AppComponent {
               }
             ],
             dataSourceRefIds: [{ id: 'f2', key: 'refId' }]
-          }
+          },
+          {
+            id: 'g1_1',
+            name: 'g1_1',
+            type: 'group',
+            class: 'col-12 col-md-12',
+            index: 0,
+            items: [
+              {
+                id: 'g1_1_i1',
+                name: 'g1_1 i1',
+                type: 'text',
+                class: 'col-12 col-md-6',
+                index: 0,
+                value: undefined
+              },
+              {
+                id: 'g1_1_i2',
+                name: 'g1_1 i2',
+                type: 'text',
+                class: 'col-12 col-md-6',
+                index: 1,
+                value: undefined,
+                formulaRefIds: ['f6']
+              },
+            ]
+          },
         ]
       },
       {
@@ -169,7 +195,7 @@ export class AppComponent {
         value: undefined,
         disabled: true,
         class: 'col-12 col-md-12',
-        formular: 'f4+f3+f555+f2+f1+g1_i2'
+        formular: 'g1_1_i2+f4+f3+f555+f2+f1+g1_i2'
       },
       {
         id: 'f555',
