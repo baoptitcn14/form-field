@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormulaEmitterInput, FormField } from 'src/app/form-field/form-field';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormulaEmitterInput, FormField } from 'src/app/form-field/form-field';
   styleUrls: ['./m-base-input.component.scss']
 })
 export class MBaseInputComponent implements OnInit {
-
+  @Input() rootData: FormField | any;
   @Input() itemData: FormField | any;
   @Output() referenceIdsEmitter = new EventEmitter();
   @Output() formulaRefIdsEmitter = new EventEmitter();

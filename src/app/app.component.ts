@@ -43,10 +43,21 @@ export class AppComponent {
           {
             id: 'g1_i3',
             name: 'g1 i3',
-            type: 'text',
+            type: 'select',
             class: 'col-12 col-md-12',
             index: 2,
-            value: undefined
+            value: undefined,
+            dataSource: [
+              {
+                id: 't1',
+                name: 'UI'
+              },
+              {
+                id: 't2',
+                name: 'T 2'
+              }
+            ],
+            dataSourceRefIds: [{ id: 'f2', key: 'refId' }]
           }
         ]
       },
@@ -198,11 +209,6 @@ export class AppComponent {
                 surname: 'Đinh Thế',
                 lastname: 'Bảo',
                 ages: 27
-              },
-              {
-                surname: 'Giàng A',
-                lastname: 'Phò',
-                ages: 50
               }
             ]
           }
