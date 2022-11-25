@@ -1,7 +1,6 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Item, Errors } from 'src/app/form-field/form-field';
+import { FormField, Errors } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 
 @Component({
@@ -23,7 +22,7 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 })
 export class MSelectComponent extends MBaseInput implements Validator {
 
-  @Input() itemData: Item | undefined;
+  @Input() itemData: FormField | undefined;
   @Output() referenceIdsEmitter = new EventEmitter();
   @Output() formulaIdsEmitter = new EventEmitter();
 

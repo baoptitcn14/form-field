@@ -1,12 +1,18 @@
-<div class="container-fluid">
-  <div class="row {{ objectForm?.class }}">
-    <ng-container *ngFor="let item of objectForm?.items">
-      <m-base-input
-        class="{{ item?.class }} mb-3"
-        (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
-        (formulaRefIdsEmitter)="onFormulaEmitter($event)"
-        [itemData]="item"
-      ></m-base-input>
-    </ng-container>
+<div id="{{ objectForm?.id }}" class="root">
+  <h5 *ngIf="objectForm?.name" class="root-name {{ objectForm?.alignName }}">
+    {{ objectForm?.name }}
+  </h5>
+
+  <div class="list-item">
+    <div class="row {{ objectForm?.class }}">
+      <ng-container *ngFor="let item of objectForm?.items">
+        <m-base-input
+          class="{{ item?.class }} mb-3"
+          (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
+          (formulaRefIdsEmitter)="onFormulaEmitter($event)"
+          [itemData]="item"
+        ></m-base-input>
+      </ng-container>
+    </div>
   </div>
 </div>

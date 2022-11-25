@@ -1,20 +1,21 @@
+// export class FormField {
+//     id: string | undefined;
+//     index: number | undefined;
+//     name: string | undefined;
+//     code: string | undefined;
+//     type: "form" | "group" | "field" | undefined;
+//     items: Item[] | undefined;
+//     class?: string | undefined;
+//     alignName?: "center" | "left" | "right";
+// }
+
 export class FormField {
     id: string | undefined;
     index: number | undefined;
     name: string | undefined;
-    code: string | undefined;
-    type: "form" | "group" | "field" | undefined;
-    items: Item[] | undefined;
-    class?: string | undefined;
-}
-
-export class Item {
-    id: string | undefined;
-    index: number | undefined;
-    name: string | undefined;
     code?: string | undefined;
-    type: "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | undefined;
-    value: string | number | Date | undefined;
+    type: "form" | "group" | "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | undefined;
+    value?: string | number | Date | undefined;
     class?: string;
     disabled?: boolean = false;
     readonly?: boolean = false;
@@ -35,6 +36,9 @@ export class Item {
     search?: boolean;
     dataSource?: any[] | undefined;
     _dataSource?: any[] | undefined;
+    items?: FormField[] | undefined;
+    // group
+    alignName?: "center" | "left" | "right";
 }
 
 export class Errors {

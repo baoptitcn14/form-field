@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { HighlighterPipe } from './highlighter.pipe';
+import { MGroupComponent } from './m-input/m-group/m-group.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HighlighterPipe } from './highlighter.pipe';
     MDateComponent,
     MTableComponent,
     MBaseInputComponent,
-    HighlighterPipe
+    HighlighterPipe,
+    MGroupComponent
   ],
   imports: [
     BrowserModule,

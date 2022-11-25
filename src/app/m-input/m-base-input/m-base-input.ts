@@ -1,6 +1,6 @@
-import { EventEmitter, Output } from "@angular/core";
+import { EventEmitter } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
-import { Errors, FormulaEmitterInput, Item } from "src/app/form-field/form-field";
+import { Errors, FormField, FormulaEmitterInput } from "src/app/form-field/form-field";
 
 export class MBaseInput implements ControlValueAccessor {
     isDisabled: boolean = false;
@@ -38,7 +38,7 @@ export class MBaseInput implements ControlValueAccessor {
         } as FormulaEmitterInput);
     }
 
-    protected baseValidate(itemData: Item | undefined, controlValue: any) {
+    protected baseValidate(itemData: FormField | undefined, controlValue: any) {
         let errors: Errors | undefined;
         const value = controlValue;
 

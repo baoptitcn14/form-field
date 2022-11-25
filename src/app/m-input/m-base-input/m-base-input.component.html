@@ -1,4 +1,9 @@
 <ng-container [ngSwitch]="itemData?.type">
+  <!-- GROUP -->
+  <ng-container *ngSwitchCase="'group'">
+    <m-group [itemData]="itemData"></m-group>
+  </ng-container>
+
   <!-- TEXT -->
   <ng-container *ngSwitchCase="'text'">
     <m-text

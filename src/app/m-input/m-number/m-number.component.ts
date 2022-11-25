@@ -1,8 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors, Validator } from '@angular/forms';
-import { Item, Errors, FormulaEmitterInput } from 'src/app/form-field/form-field';
+import { FormField, Errors, FormulaEmitterInput } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
-import { MTextComponent } from '../m-text/m-text.component';
 
 @Component({
   selector: 'm-number',
@@ -23,7 +22,7 @@ import { MTextComponent } from '../m-text/m-text.component';
 })
 
 export class MNumberComponent extends MBaseInput implements Validator {
-  @Input() itemData: Item | any;
+  @Input() itemData: FormField | any;
   @Output() formulaIdsEmitter = new EventEmitter<FormulaEmitterInput>();
   errors: Errors | undefined;
 

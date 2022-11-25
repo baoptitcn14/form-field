@@ -1,19 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Item } from 'src/app/form-field/form-field';
-import { MBaseInput } from '../m-base-input/m-base-input';
+import { FormField } from 'src/app/form-field/form-field';
 
 @Component({
   selector: 'm-table',
   templateUrl: './m-table.component.html',
   styleUrls: ['./m-table.component.scss']
 })
-export class MTableComponent extends MBaseInput implements OnInit {
-  @Input() itemData: Item | undefined;
+export class MTableComponent implements OnInit {
+  @Input() itemData: FormField | undefined;
   listHeader: any[] = [];
   listData: any[] = [];
 
   constructor() {
-    super();
   }
 
   ngOnInit(): void {

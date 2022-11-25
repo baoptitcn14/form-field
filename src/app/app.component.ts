@@ -11,10 +11,45 @@ export class AppComponent {
     id: 'a',
     code: 'AA',
     index: 0,
-    name: 'aaaA',
+    name: '',
     type: 'form',
     class: 'row',
     items: [
+      {
+        id: 'g1',
+        code: 'group1',
+        index: 0,
+        name: 'group 1',
+        class: 'col-12 col-md-12',
+        type: 'group',
+        alignName: 'center',
+        items: [
+          {
+            id: 'g1_i1',
+            name: 'g1 i1',
+            type: 'text',
+            class: 'col-12 col-md-6',
+            index: 0,
+            value: undefined
+          },
+          {
+            id: 'g1_i2',
+            name: 'g1 i2',
+            type: 'text',
+            class: 'col-12 col-md-6',
+            index: 1,
+            value: undefined
+          },
+          {
+            id: 'g1_i3',
+            name: 'g1 i3',
+            type: 'text',
+            class: 'col-12 col-md-12',
+            index: 2,
+            value: undefined
+          }
+        ]
+      },
       {
         id: 'f1',
         code: 'coddef',
@@ -165,8 +200,8 @@ export class AppComponent {
                 ages: 27
               },
               {
-                surname: 'Nguyễn Châu',
-                lastname: 'Giang',
+                surname: 'Giàng A',
+                lastname: 'Phò',
                 ages: 50
               }
             ]
@@ -176,7 +211,30 @@ export class AppComponent {
     ]
   }];
 
+  result = {} as any;
+
   ac(obj: FormField) {
-    console.log(obj);
+    obj.items?.forEach(e => {
+      if (e != undefined) {
+        if (e.type == 'form' || e.type == 'group') {
+          this.ac(e);
+        } else if (e.type !== 'table') {
+          if (e.id)
+            this.result[e.id] = e.value;
+        }
+      }
+    });
+
+    console.log(this.result)
   }
+
+  // {
+  //     "g1_i1": "123",
+  //     "g1_i2": "asdasd",
+  //     "f2": "select3",
+  //     "f3": 2,
+  //     "f4": "2022-11-24T17:00:00.000Z",
+  //     "f6": "25/11/2022 2 sad123asdasd select 3  ",
+  //     "f555": "sad123asdasd"
+  // }
 }
