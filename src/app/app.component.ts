@@ -38,7 +38,8 @@ export class AppComponent {
             type: 'text',
             class: 'col-12 col-md-6',
             index: 1,
-            value: undefined
+            value: undefined,
+            formulaRefIds: ['f6']
           },
           {
             id: 'g1_i3',
@@ -168,7 +169,7 @@ export class AppComponent {
         value: undefined,
         disabled: true,
         class: 'col-12 col-md-12',
-        formular: 'f4+f3+f555+f2+f1'
+        formular: 'f4+f3+f555+f2+f1+g1_i2'
       },
       {
         id: 'f555',

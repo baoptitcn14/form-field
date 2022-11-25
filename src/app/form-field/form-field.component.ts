@@ -18,7 +18,7 @@ export class FormFieldComponent implements OnInit {
   ngOnInit(): void {
     this.rootData?.items?.forEach(e => {
       if (e.formular && e.value === undefined) {
-        e.value = this.formFieldService.getValueByFormula(e.formular, this.rootData);
+        e.value = this.formFieldService.getValueByFormula(e.formular, this.rootData, this.rootData);
       }
     });
 

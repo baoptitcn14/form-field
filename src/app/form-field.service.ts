@@ -12,22 +12,22 @@ export class FormFieldService {
   ) { }
 
 
-  getValueByFormula(formular: string | undefined, object: FormField | undefined) {
+  getValueByFormula(formular: string | undefined, object: FormField | undefined, rootData: FormField | undefined) {
     if (!formular || !object) return undefined;
 
     const arrFormula = formular.split('+');
     let result = '';
 
     arrFormula?.forEach(c => {
-      const v = this.getValueById(c, object) as string;
+      const v = this.getValueById(c, object, rootData) as string;
       result += v ? v + ' ' : '';
     });
 
     return result;
   }
 
-  getValueById(id: string, object: FormField) {
-    const item = object?.items?.find(x => x.id == id);
+  getValueById(id: string, object: FormField, rootData: FormField | undefined) {
+    let item = object?.items?.find(x => x.id == id);
     if (item) {
       const type = typeof (item.value);
 
@@ -37,8 +37,21 @@ export class FormFieldService {
         return this.service.formatDate(item.value as Date);
       }
       return null;
+    } else {
+      item = this.findItemOnRootById(rootData, id);
+
+      if (item) {
+        const type = typeof (item.value);
+
+        if (type == 'string' || type == "number") {
+          return this.getDisplayNameByValue(item, item.value);
+        } else if (this.service.isTypeOfDate(item.value)) {
+          return this.service.formatDate(item.value as Date);
+        }
+      }
+
+      return null;
     }
-    return null;
   }
 
   getDisplayNameByValue(item: FormField, value: string | number | Date | undefined) {
@@ -86,15 +99,17 @@ export class FormFieldService {
   private findItemOnRootById(objectData: FormField | undefined, id: string) {
     let result = this.findAllGroupInObject(objectData, id);
 
-    if (typeof (result) == "object") {
-      return result as FormField;
-    } else {
-      if (result) {
-        (result as FormField[]).forEach(e => {
-          this.findItemOnRootById(e, id);
-        });
+    if (result === undefined) return result;
+
+    if (Array.isArray(result)) {
+      let f: FormField | undefined;
+      for (let i = 0; i < result.length; i++) {
+        f = this.findItemOnRootById(result[i], id);
+        if (f !== undefined) break;
       }
-      return undefined;
+      return f;
+    } else {
+      return result;
     }
   }
 
@@ -107,20 +122,18 @@ export class FormFieldService {
   }
 
   onFormulaEmitter(event: FormulaEmitterInput, objectData: FormField | undefined, rootData: FormField | undefined) {
-
-    debugger;
     const data = event;
 
     if (data.formulaRefIds && data.formulaRefIds?.length > 0) {
       data.formulaRefIds.forEach(e => {
         let item = objectData?.items?.find(x => x.id == e);
         if (item) {
-          item.value = this.getValueByFormula(item.formular, objectData);
+          item.value = this.getValueByFormula(item.formular, objectData, rootData);
         } else {
           item = this.findItemOnRootById(rootData, e);
 
           if (item) {
-            item.value = this.getValueByFormula(item.formular, objectData);
+            item.value = this.getValueByFormula(item.formular, objectData, rootData);
           }
         }
       });
