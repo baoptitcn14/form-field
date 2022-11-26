@@ -29,11 +29,11 @@ export class FormFieldComponent implements OnInit {
     });
   }
 
-  onReferenceIdsEmitter(itemData: FormField) {
-    this.formFieldService.onReferenceIdsEmitter(itemData, this.rootData, this.rootData);
-  }
+  // onReferenceIdsEmitter(itemData: FormField) {
+  //   this.formFieldService.onReferenceIdsEmitter(itemData, this.rootData, this.rootData);
+  // }
 
-  onFormulaEmitter(event: FormulaEmitterInput) {
-    this.formFieldService.onFormulaEmitter(event, this.rootData, this.rootData);
-  }
+  // onFormulaEmitter(event: FormulaEmitterInput) {
+  //   this.formFieldService.onFormulaEmitter(event, this.rootData, this.rootData);
+  // }
 }

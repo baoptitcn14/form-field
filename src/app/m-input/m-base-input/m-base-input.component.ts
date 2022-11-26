@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormFieldService } from 'src/app/form-field.service';
 import { FormulaEmitterInput, FormField } from 'src/app/form-field/form-field';
 
 @Component({
@@ -12,17 +13,27 @@ export class MBaseInputComponent implements OnInit {
   @Output() referenceIdsEmitter = new EventEmitter();
   @Output() formulaRefIdsEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private formFieldService: FormFieldService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onReferenceIdsEmitter(itemData: FormField) {
-    this.referenceIdsEmitter.emit(itemData);
+    this.formFieldService.onReferenceIdsEmitter(itemData, this.itemData, this.rootData);
   }
 
   onFormulaIdsEmitter(event: FormulaEmitterInput) {
-    this.formulaRefIdsEmitter.emit(event);
+    this.formFieldService.onFormulaEmitter(event, this.itemData, this.rootData);
   }
+
+  // onReferenceIdsEmitter(itemData: FormField) {
+  //   this.referenceIdsEmitter.emit(itemData);
+  // }
+
+  // onFormulaIdsEmitter(event: FormulaEmitterInput) {
+  //   this.formulaRefIdsEmitter.emit(event);
+  // }
 
 }

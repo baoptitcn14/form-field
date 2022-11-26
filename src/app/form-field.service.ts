@@ -79,6 +79,25 @@ export class FormFieldService {
     }
   }
 
+  onFormulaEmitter(event: FormulaEmitterInput, objectData: FormField | undefined, rootData: FormField | undefined) {
+    const data = event;
+
+    if (data.formulaRefIds && data.formulaRefIds?.length > 0) {
+      data.formulaRefIds.forEach(e => {
+        let item = objectData?.items?.find(x => x.id == e);
+        if (item) {
+          item.value = this.getValueByFormula(item.formular, objectData, rootData);
+        } else {
+          item = this.findItemOnRootById(rootData, e);
+
+          if (item) {
+            item.value = this.getValueByFormula(item.formular, objectData, rootData);
+          }
+        }
+      });
+    }
+  }
+  
   private setDataForDataSourceRefIds(item: FormField, key: string, valueFilter: string | number | Date | undefined, objectData: FormField | undefined, rootData: FormField | undefined) {
     item.value = undefined;
 
@@ -121,22 +140,4 @@ export class FormFieldService {
     return objectData?.items?.filter(x => x.type == 'group');
   }
 
-  onFormulaEmitter(event: FormulaEmitterInput, objectData: FormField | undefined, rootData: FormField | undefined) {
-    const data = event;
-
-    if (data.formulaRefIds && data.formulaRefIds?.length > 0) {
-      data.formulaRefIds.forEach(e => {
-        let item = objectData?.items?.find(x => x.id == e);
-        if (item) {
-          item.value = this.getValueByFormula(item.formular, objectData, rootData);
-        } else {
-          item = this.findItemOnRootById(rootData, e);
-
-          if (item) {
-            item.value = this.getValueByFormula(item.formular, objectData, rootData);
-          }
-        }
-      });
-    }
-  }
 }

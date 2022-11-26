@@ -1,14 +1,3 @@
-// export class FormField {
-//     id: string | undefined;
-//     index: number | undefined;
-//     name: string | undefined;
-//     code: string | undefined;
-//     type: "form" | "group" | "field" | undefined;
-//     items: Item[] | undefined;
-//     class?: string | undefined;
-//     alignName?: "center" | "left" | "right";
-// }
-
 export class FormField {
     id: string | undefined;
     index: number | undefined;
@@ -20,6 +9,7 @@ export class FormField {
     disabled?: boolean = false;
     readonly?: boolean = false;
     required?: boolean = false;
+    valid?: boolean = true;
     icon?: string;
     formulaRefIds?: string[];
     // text | number

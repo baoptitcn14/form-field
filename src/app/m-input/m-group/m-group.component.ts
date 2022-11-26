@@ -17,12 +17,12 @@ export class MGroupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onReferenceIdsEmitter(itemData: FormField) {
-    this.formFieldService.onReferenceIdsEmitter(itemData, this.groupData, this.rootData);
-  }
+  // onReferenceIdsEmitter(itemData: FormField) {
+  //   this.formFieldService.onReferenceIdsEmitter(itemData, this.groupData, this.rootData);
+  // }
 
-  onFormulaEmitter(event: FormulaEmitterInput) {
-    this.formFieldService.onFormulaEmitter(event, this.groupData, this.rootData);
-  }
+  // onFormulaEmitter(event: FormulaEmitterInput) {
+  //   this.formFieldService.onFormulaEmitter(event, this.groupData, this.rootData);
+  // }
 
 }

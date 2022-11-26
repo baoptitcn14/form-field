@@ -5,8 +5,6 @@
     <ng-container *ngFor="let item of groupData?.items">
       <m-base-input
         class="{{ item?.class }} mb-3"
-        (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
-        (formulaRefIdsEmitter)="onFormulaEmitter($event)"
         [itemData]="item"
         [rootData]="rootData"
       ></m-base-input>
