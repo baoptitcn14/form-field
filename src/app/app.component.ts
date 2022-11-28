@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormField } from './form-field/form-field';
 
 @Component({
@@ -6,7 +6,8 @@ import { FormField } from './form-field/form-field';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+ 
   listObjectForm: FormField[] = [{
     id: 'a',
     code: 'AA',
@@ -27,6 +28,7 @@ export class AppComponent {
           {
             id: 'g1_i1',
             name: 'g1 i1',
+            code: 'g1_i1',
             type: 'text',
             class: 'col-12 col-md-6',
             index: 0,
@@ -35,6 +37,7 @@ export class AppComponent {
           {
             id: 'g1_i2',
             name: 'g1 i2',
+            code: 'g1_i2',
             type: 'text',
             class: 'col-12 col-md-6',
             index: 1,
@@ -43,6 +46,7 @@ export class AppComponent {
           },
           {
             id: 'g1_i3',
+            code: 'g1_i3',
             name: 'g1 i3',
             type: 'select',
             class: 'col-12 col-md-12',
@@ -63,6 +67,7 @@ export class AppComponent {
           {
             id: 'g1_1',
             name: 'g1_1',
+            code: 'g1_1',
             type: 'group',
             class: 'col-12 col-md-12',
             index: 0,
@@ -70,6 +75,7 @@ export class AppComponent {
               {
                 id: 'g1_1_i1',
                 name: 'g1_1 i1',
+                code: 'g1_1_i1',
                 type: 'text',
                 class: 'col-12 col-md-6',
                 index: 0,
@@ -78,6 +84,7 @@ export class AppComponent {
               {
                 id: 'g1_1_i2',
                 name: 'g1_1 i2',
+                code: 'g1_1_i2',
                 type: 'text',
                 class: 'col-12 col-md-6',
                 index: 1,
@@ -245,6 +252,10 @@ export class AppComponent {
   }];
 
   result = {} as any;
+
+  ngOnInit(): void {
+    
+  }
 
   ac(obj: FormField) {
     obj.items?.forEach(e => {

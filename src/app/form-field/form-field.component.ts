@@ -16,24 +16,19 @@ export class FormFieldComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.rootData?.items?.forEach(e => {
-      if (e.formular && e.value === undefined) {
-        e.value = this.formFieldService.getValueByFormula(e.formular, this.rootData, this.rootData);
-      }
-    });
+    this.formFieldService.initAllItem(this.rootData);
 
     this.rootData?.items?.sort(function (x, y) {
       if (x.index === undefined || x.index === null) x.index = 0;
       if (y.index === undefined || y.index === null) y.index = 0;
       return x.index - y.index;
     });
+
+
+    this.rootData?.items?.forEach(e => {
+      if (e.formular && e.value === undefined) {
+        e.value = this.formFieldService.getValueByFormula(e.formular);
+      }
+    });
   }
-
-  // onReferenceIdsEmitter(itemData: FormField) {
-  //   this.formFieldService.onReferenceIdsEmitter(itemData, this.rootData, this.rootData);
-  // }
-
-  // onFormulaEmitter(event: FormulaEmitterInput) {
-  //   this.formFieldService.onFormulaEmitter(event, this.rootData, this.rootData);
-  // }
 }

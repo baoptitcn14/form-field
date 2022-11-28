@@ -2,7 +2,7 @@ export class FormField {
     id: string | undefined;
     index: number | undefined;
     name: string | undefined;
-    code?: string | undefined;
+    code: string | undefined;
     type: "form" | "group" | "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | undefined;
     value?: string | number | Date | undefined;
     class?: string;
