@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { FormFieldService } from './form-field.service';
 import { FormField } from './form-field/form-field';
 
 @Component({
@@ -6,8 +7,8 @@ import { FormField } from './form-field/form-field';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
- 
+export class AppComponent implements OnDestroy {
+
   listObjectForm: FormField[] = [{
     id: 'a',
     code: 'AA',
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
           {
             id: 'g1_i1',
             name: 'g1 i1',
-            code: 'g1_i1',
+            code: 'sonha',
             type: 'text',
             class: 'col-12 col-md-6',
             index: 0,
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit {
           {
             id: 'g1_i2',
             name: 'g1 i2',
-            code: 'g1_i2',
+            code: 'diachi',
             type: 'text',
             class: 'col-12 col-md-6',
             index: 1,
@@ -97,7 +98,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f1',
-        code: 'coddef',
+        code: 'tinh',
         index: 0,
         name: 'Tỉnh',
         type: 'select',
@@ -123,7 +124,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f2',
-        code: 'coddef4',
+        code: 'thanhpho',
         index: 1,
         name: 'Thành phố, Huyện',
         type: 'select',
@@ -170,7 +171,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f3',
-        code: 'coddef',
+        code: 'sonha',
         index: 2,
         name: 'Số nhà',
         type: 'number',
@@ -183,7 +184,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f4',
-        code: 'coddef4',
+        code: 'ngay',
         index: 5,
         name: 'Ngày',
         type: 'date',
@@ -195,7 +196,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f6',
-        code: 'coddef4',
+        code: 'diachi',
         index: 6,
         name: 'Địa chỉ',
         type: 'text',
@@ -206,7 +207,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f555',
-        code: 'coddef555',
+        code: 'text',
         index: 92,
         name: 'text',
         type: 'text',
@@ -216,7 +217,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 'f5',
-        code: 'coddef5',
+        code: 'table',
         index: 99,
         name: 'table',
         type: 'table',
@@ -249,36 +250,109 @@ export class AppComponent implements OnInit {
         ]
       }
     ]
-  }];
+  },
+
+  {
+    id: 'abbbb',
+    code: 'AA',
+    index: 0,
+    name: '',
+    type: 'form',
+    class: 'row',
+    items: [
+      {
+        id: 'g1',
+        code: 'group1',
+        index: 0,
+        name: 'group 1',
+        class: 'col-12 col-md-12',
+        type: 'group',
+        alignName: 'center',
+        items: [
+          {
+            id: 'g1_i1',
+            name: 'g1 i1',
+            code: 'sonha',
+            type: 'text',
+            class: 'col-12 col-md-6',
+            index: 0,
+            value: undefined
+          },
+          {
+            id: 'g1_i2',
+            name: 'g1 i2',
+            code: 'diachi',
+            type: 'text',
+            class: 'col-12 col-md-6',
+            index: 1,
+            value: undefined,
+            formulaRefIds: ['f6']
+          },
+          {
+            id: 'g1_i3',
+            code: 'g1_i3',
+            name: 'g1 i3',
+            type: 'select',
+            class: 'col-12 col-md-12',
+            index: 2,
+            value: undefined,
+            dataSource: [
+              {
+                id: 't1',
+                name: 'UI'
+              },
+              {
+                id: 't2',
+                name: 'T 2'
+              }
+            ],
+            dataSourceRefIds: [{ id: 'f2', key: 'refId' }]
+          },
+          {
+            id: 'g1_1',
+            name: 'g1_1',
+            code: 'g1_1',
+            type: 'group',
+            class: 'col-12 col-md-12',
+            index: 0,
+            items: [
+              {
+                id: 'g1_1_i1',
+                name: 'g1_1 i1',
+                code: 'g1_1_i1',
+                type: 'text',
+                class: 'col-12 col-md-6',
+                index: 0,
+                value: undefined
+              },
+              {
+                id: 'g1_1_i2',
+                name: 'g1_1 i2',
+                code: 'g1_1_i2',
+                type: 'text',
+                class: 'col-12 col-md-6',
+                index: 1,
+                value: undefined,
+                formulaRefIds: ['f6']
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  }
+  ];
 
   result = {} as any;
 
-  ngOnInit(): void {
-    
+  constructor(private formFieldService: FormFieldService) { }
+
+  ngOnDestroy(): void {
+    this.formFieldService.destroy();
   }
 
-  ac(obj: FormField) {
-    obj.items?.forEach(e => {
-      if (e != undefined) {
-        if (e.type == 'form' || e.type == 'group') {
-          this.ac(e);
-        } else if (e.type !== 'table') {
-          if (e.id)
-            this.result[e.id] = e.value;
-        }
-      }
-    });
-
-    console.log(this.result)
+  onAction(obj: FormField) {
+    this.result = this.formFieldService.getResult(obj, {} as any);
+    console.log(this.formFieldService.allItem);
   }
-
-  // {
-  //     "g1_i1": "123",
-  //     "g1_i2": "asdasd",
-  //     "f2": "select3",
-  //     "f3": 2,
-  //     "f4": "2022-11-24T17:00:00.000Z",
-  //     "f6": "25/11/2022 2 sad123asdasd select 3  ",
-  //     "f555": "sad123asdasd"
-  // }
 }

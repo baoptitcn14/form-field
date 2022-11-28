@@ -3,7 +3,7 @@
     <div class="col-12">
       <ng-container *ngFor="let ob of listObjectForm">
         <m-form-field [rootData]="ob"></m-form-field>
-        <button class="btn btn-success" (click)="ac(ob)">check</button>
+        <button class="btn btn-success" (click)="onAction(ob)">check</button>
       </ng-container>
     </div>
   </div>

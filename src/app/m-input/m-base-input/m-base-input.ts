@@ -66,6 +66,7 @@ export class MBaseInput implements ControlValueAccessor {
             }
         }
 
+        itemData!.valid = errors ? false : true;
         return errors ? errors : undefined;
     }
 

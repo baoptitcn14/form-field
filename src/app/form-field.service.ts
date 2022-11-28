@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { FormField, FormulaEmitterInput } from './form-field/form-field';
 import { ServicesService } from './services.service';
 
@@ -12,7 +13,6 @@ export class FormFieldService {
   constructor(
     private service: ServicesService
   ) { }
-
 
   getValueByFormula(formular: string | undefined) {
     if (!formular) return undefined;
@@ -88,6 +88,25 @@ export class FormFieldService {
     });
   }
 
+  getResult(obj: FormField, o: any) {
+    obj.items?.forEach(e => {
+      if (e != undefined && e.code) {
+        if (e.type == 'form' || e.type == 'group') {
+          o[e.code] = {} as any;
+          this.getResult(e, o[e.code]);
+        } else if (e.type !== 'table') {
+          o[e.code] = e.value;
+        }
+      }
+    });
+
+    return o;
+  }
+
+  destroy() {
+    this.allItem = [];
+  }
+
   private setDataForDataSourceRefIds(item: FormField, key: string, valueFilter: string | number | Date | undefined) {
     item.value = undefined;
 
@@ -104,30 +123,4 @@ export class FormFieldService {
     else
       item.dataSource = item._dataSource?.filter(z => z[key] == valueFilter);
   }
-
-  // private findItemOnRootById(objectData: FormField | undefined, id: string) {
-  //   let result = this.findAllGroupInObject(objectData, id);
-
-  //   if (result === undefined) return result;
-
-  //   if (Array.isArray(result)) {
-  //     let f: FormField | undefined;
-  //     for (let i = 0; i < result.length; i++) {
-  //       f = this.findItemOnRootById(result[i], id);
-  //       if (f !== undefined) break;
-  //     }
-  //     return f;
-  //   } else {
-  //     return result;
-  //   }
-  // }
-
-  // private findAllGroupInObject(objectData: FormField | undefined, id: string) {
-  //   let item = objectData?.items?.find(x => x.id == id);
-
-  //   if (item) return item;
-
-  //   return objectData?.items?.filter(x => x.type == 'group');
-  // }
-
 }

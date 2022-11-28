@@ -48,7 +48,7 @@ export class MNumberComponent extends MBaseInput implements Validator {
         this.deleteErrorByKey('max');
       }
     }
-
+    this.itemData!.valid = this.errors ? false : true;
     return this.errors ? this.errors : null;
   }
 
