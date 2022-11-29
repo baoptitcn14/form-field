@@ -24,6 +24,7 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 export class MNumberComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | any;
   @Output() formulaIdsEmitter = new EventEmitter<FormulaEmitterInput>();
+  @Output() validEmitter = new EventEmitter();
   errors: Errors | undefined;
 
   validate(control: AbstractControl): ValidationErrors | null {
@@ -49,6 +50,7 @@ export class MNumberComponent extends MBaseInput implements Validator {
       }
     }
     this.itemData!.valid = this.errors ? false : true;
+    this.validEmitter.emit(this.errors ? false : true);
     return this.errors ? this.errors : null;
   }
 

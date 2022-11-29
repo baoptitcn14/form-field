@@ -1,7 +1,7 @@
 <ng-container [ngSwitch]="itemData?.type">
   <!-- GROUP -->
   <ng-container *ngSwitchCase="'group'">
-    <m-group [itemData]="itemData"></m-group>
+    <m-form-field [rootData]="itemData" [rootId]="rootId"></m-form-field>
   </ng-container>
 
   <!-- TEXT -->
@@ -11,6 +11,7 @@
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
       (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
+      (validEmitter)="onCheckValidRootEmitter()"
     ></m-text>
   </ng-container>
 
@@ -21,6 +22,7 @@
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
       (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
+      (validEmitter)="onCheckValidRootEmitter()"
     ></m-number>
   </ng-container>
 
@@ -31,6 +33,7 @@
       [(ngModel)]="itemData.value"
       [disabled]="itemData.disabled"
       (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
+      (validEmitter)="onCheckValidRootEmitter()"
     ></m-date>
   </ng-container>
 
@@ -42,6 +45,7 @@
       [disabled]="itemData.disabled"
       (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
       (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
+      (validEmitter)="onCheckValidRootEmitter()"
     ></m-select>
   </ng-container>
 

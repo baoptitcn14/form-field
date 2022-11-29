@@ -251,7 +251,6 @@ export class AppComponent implements OnDestroy {
       }
     ]
   },
-
   {
     id: 'abbbb',
     code: 'AA',
@@ -263,7 +262,7 @@ export class AppComponent implements OnDestroy {
       {
         id: 'g1',
         code: 'group1',
-        index: 0,
+        index: 1,
         name: 'group 1',
         class: 'col-12 col-md-12',
         type: 'group',
@@ -353,6 +352,6 @@ export class AppComponent implements OnDestroy {
 
   onAction(obj: FormField) {
     this.result = this.formFieldService.getResult(obj, {} as any);
-    console.log(this.formFieldService.allItem);
+    console.log(this.formFieldService.allItem)
   }
 }

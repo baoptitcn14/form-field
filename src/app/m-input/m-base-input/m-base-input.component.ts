@@ -9,8 +9,10 @@ import { FormulaEmitterInput, FormField } from 'src/app/form-field/form-field';
 })
 export class MBaseInputComponent implements OnInit {
   @Input() itemData: FormField | any;
+  @Input() rootId: string | undefined;
   @Output() referenceIdsEmitter = new EventEmitter();
   @Output() formulaRefIdsEmitter = new EventEmitter();
+  @Output() validEmitter = new EventEmitter();
 
   constructor(
     private formFieldService: FormFieldService
@@ -20,11 +22,15 @@ export class MBaseInputComponent implements OnInit {
   }
 
   onReferenceIdsEmitter(itemData: FormField) {
-    this.formFieldService.onReferenceIdsEmitter(itemData);
+    this.referenceIdsEmitter.emit(itemData);
   }
 
   onFormulaIdsEmitter(event: FormulaEmitterInput) {
-    this.formFieldService.onFormulaEmitter(event);
+    this.formulaRefIdsEmitter.emit(event);
+  }
+
+  onCheckValidRootEmitter() {
+    this.validEmitter.emit();
   }
 
 }

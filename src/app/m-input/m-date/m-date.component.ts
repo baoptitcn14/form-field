@@ -23,11 +23,13 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 export class MDateComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | any;
   @Output() formulaIdsEmitter = new EventEmitter<FormulaEmitterInput>();
+  @Output() validEmitter = new EventEmitter();
 
   errors: Errors | undefined;
 
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
+    this.validEmitter.emit(this.errors ? false : true);
     return this.errors ? this.errors : null;
   }
 

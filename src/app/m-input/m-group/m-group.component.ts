@@ -8,6 +8,7 @@ import { FormField } from 'src/app/form-field/form-field';
 })
 export class MGroupComponent implements OnInit {
   @Input('itemData') groupData: FormField | undefined;
+  @Input() rootId: string | undefined;
 
   constructor() { }
 

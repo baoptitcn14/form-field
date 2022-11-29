@@ -25,12 +25,14 @@ export class MSelectComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
   @Output() referenceIdsEmitter = new EventEmitter();
   @Output() formulaIdsEmitter = new EventEmitter();
+  @Output() validEmitter = new EventEmitter();
 
   errors: Errors | undefined;
   search: string | undefined;
 
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
+    this.validEmitter.emit(this.errors ? false : true);
     return this.errors ? this.errors : null;
   }
 

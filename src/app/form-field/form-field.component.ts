@@ -10,13 +10,23 @@ import { FormField, FormulaEmitterInput } from './form-field';
 })
 export class FormFieldComponent implements OnInit {
   @Input() rootData: FormField | undefined;
+  @Input() rootId: string | undefined;
 
   constructor(
     private formFieldService: FormFieldService
   ) { }
 
   ngOnInit(): void {
-    this.formFieldService.initAllItem(this.rootData);
+
+    if (this.rootData?.type == 'form') {
+      this.formFieldService.initAllItem(this.rootData, this.rootId);
+
+      this.rootData?.items?.forEach(e => {
+        if (e.formular && e.value === undefined) {
+          e.value = this.formFieldService.getValueByFormula(e.formular, this.rootId);
+        }
+      });
+    }
 
     this.rootData?.items?.sort(function (x, y) {
       if (x.index === undefined || x.index === null) x.index = 0;
@@ -24,11 +34,17 @@ export class FormFieldComponent implements OnInit {
       return x.index - y.index;
     });
 
+  }
 
-    this.rootData?.items?.forEach(e => {
-      if (e.formular && e.value === undefined) {
-        e.value = this.formFieldService.getValueByFormula(e.formular);
-      }
-    });
+  onReferenceIdsEmitter(itemData: FormField) {
+    this.formFieldService.onReferenceIdsEmitter(itemData, this.rootId);
+  }
+
+  onFormulaIdsEmitter(event: FormulaEmitterInput) {
+    this.formFieldService.onFormulaEmitter(event, this.rootId);
+  }
+
+  onCheckValidRoot() {
+    this.formFieldService.setValidForRoot(this.rootId);
   }
 }
