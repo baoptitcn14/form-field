@@ -21,6 +21,8 @@ import { MGroupComponent } from './m-input/m-group/m-group.component';
 import { MCheckboxComponent } from './m-input/m-checkbox/m-checkbox.component';
 import { MRadioComponent } from './m-input/m-radio/m-radio.component';
 import { MButtonComponent } from './m-input/m-button/m-button.component';
+import { MGroupCheckboxComponent } from './m-input/m-group-checkbox/m-group-checkbox.component';
+import { MGroupRadioComponent } from './m-input/m-group-radio/m-group-radio.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MButtonComponent } from './m-input/m-button/m-button.component';
     MGroupComponent,
     MCheckboxComponent,
     MRadioComponent,
-    MButtonComponent
+    MButtonComponent,
+    MGroupCheckboxComponent,
+    MGroupRadioComponent
   ],
   imports: [
     BrowserModule,

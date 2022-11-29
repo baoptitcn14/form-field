@@ -192,6 +192,85 @@ export class AppComponent implements OnDestroy {
         class: 'col-12 col-md-6'
       },
       {
+        id: 'f3aa',
+        code: 'gioitinh2',
+        index: 2,
+        name: 'Giới tính nu',
+        type: 'checkbox',
+        value: undefined,
+        class: 'col-12 col-md-6'
+      },
+      {
+        id: 'f3aa1122233',
+        code: 'gioitinh21',
+        index: 2,
+        name: 'group checkbox',
+        type: 'group_checkbox',
+        value: undefined,
+        class: 'col-12 col-md-6',
+        items: [
+          {
+            id: 'aa1ll',
+            code: 'aaa1',
+            index: 0,
+            name: 'cb 1',
+            type: 'checkbox',
+            value: undefined
+          },
+          {
+            id: 'aa1ll1',
+            code: 'aaa11',
+            index: 0,
+            name: 'cb 2',
+            type: 'checkbox',
+            value: undefined
+          },
+          {
+            id: 'aa1ll2',
+            code: 'aaa112',
+            index: 0,
+            name: 'cb 3',
+            type: 'checkbox',
+            value: undefined
+          }
+        ]
+      },
+      {
+        id: 'rf3aa1',
+        code: 'group_radio1',
+        index: 2,
+        name: 'radio 1',
+        type: 'group_radio',
+        value: undefined,
+        class: 'col-12 col-md-6',
+        items: [
+          {
+            id: 'raa1ll',
+            code: 'raaa1',
+            index: 0,
+            name: 'rd 1',
+            type: undefined,
+            value: undefined
+          },
+          {
+            id: 'raa1ll1',
+            code: 'raaa11',
+            index: 0,
+            name: 'rd 2',
+            type: undefined,
+            value: undefined
+          },
+          {
+            id: 'raa1ll2',
+            code: 'raaa112',
+            index: 0,
+            name: 'rd 3',
+            type: undefined,
+            value: undefined
+          }
+        ]
+      },
+      {
         id: 'f4',
         code: 'ngay',
         index: 5,

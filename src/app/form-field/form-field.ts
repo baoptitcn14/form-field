@@ -3,8 +3,8 @@ export class FormField {
     index: number | undefined;
     name: string | undefined;
     code: string | undefined;
-    type: "form" | "group" | "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | undefined;
-    value?: string | number | Date | undefined;
+    type: "form" | "group" | "text" | "number" | "select" | "date" | "table" | "checkbox" | "group_radio" | "group_checkbox" | undefined;
+    value?: any;
     class?: string;
     disabled?: any = false;
     readonly?: boolean = false;
@@ -13,6 +13,7 @@ export class FormField {
     icon?: string;
     formulaRefIds?: string[];
     compairWithRefIds?: string[];
+    inputName?: string;
     // text | number
     regex?: RegExp;
     // text | number
@@ -30,6 +31,7 @@ export class FormField {
     items?: FormField[] | undefined;
     // group
     alignName?: "center" | "left" | "right";
+    
 }
 
 export class Errors {

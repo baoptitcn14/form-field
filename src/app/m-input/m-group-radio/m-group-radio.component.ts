@@ -1,30 +1,29 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, AbstractControl, ValidationErrors } from '@angular/forms';
 import { FormFieldService } from 'src/app/form-field.service';
-import { Errors, FormField } from 'src/app/form-field/form-field';
+import { FormField, Errors } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 
 @Component({
-  selector: 'm-checkbox',
-  templateUrl: './m-checkbox.component.html',
-  styleUrls: ['./m-checkbox.component.scss'],
+  selector: 'm-group-radio',
+  templateUrl: './m-group-radio.component.html',
+  styleUrls: ['./m-group-radio.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MCheckboxComponent),
+      useExisting: forwardRef(() => MGroupRadioComponent),
       multi: true
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => MCheckboxComponent),
+      useExisting: forwardRef(() => MGroupRadioComponent),
       multi: true
     }
   ]
 })
-export class MCheckboxComponent extends MBaseInput implements Validator {
+export class MGroupRadioComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
   @Input() rootId: string | undefined;
-  @Output() valueChangeEmitter = new EventEmitter();
 
   errors: Errors | undefined;
 
@@ -33,13 +32,14 @@ export class MCheckboxComponent extends MBaseInput implements Validator {
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    this.baseValidate(this.itemData, control.value);
+    this.errors = this.baseValidate(this.itemData, control.value);
+    this.proccessValidEmitter(this.rootId);
     return this.errors ? this.errors : null;
   }
 
-  onChangeValue() {
+  onChangeValue(): void {
+    this.value = this.itemData?.items?.find(e => e.value == true)?.id;
     this.handler();
-    this.valueChangeEmitter.emit(this.itemData?.value);
   }
 
 }

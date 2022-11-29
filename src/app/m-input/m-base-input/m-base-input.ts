@@ -5,7 +5,7 @@ import { Errors, FormField, FormulaEmitterInput } from "src/app/form-field/form-
 
 export class MBaseInput implements ControlValueAccessor {
     isDisabled: boolean = false;
-    value: string | number | Date | undefined;
+    value: any;
     listErrors: { key: string, message: string }[] = [];
 
     constructor(private formFieldService: FormFieldService) { }

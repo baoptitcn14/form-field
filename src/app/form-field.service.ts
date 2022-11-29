@@ -95,14 +95,14 @@ export class FormFieldService {
 
     if (!this.allItem) this.allItem = {};
 
-    const allGroupOrForm = objectData?.items?.filter(e => e.type === 'group' || e.type === 'form');
+    const allObjectHasItems = objectData?.items?.filter(e => e.type === 'group' || e.type === 'form' || e.type === 'group_checkbox');
     const allNotGroupOrForm = objectData?.items?.filter(e => e.type !== 'group' && e.type !== 'form' && e.type != 'table');
 
     if (objectData.id === rootId) this.allItem[rootId] = [...(this.allItem[rootId] || []), ...([objectData] || [])];
 
     this.allItem[rootId] = [...(this.allItem[rootId] || []), ...(allNotGroupOrForm || [])];
 
-    allGroupOrForm?.forEach(e => {
+    allObjectHasItems?.forEach(e => {
       this.initAllItem(e, rootId);
     });
   }
