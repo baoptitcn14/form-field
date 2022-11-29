@@ -36,15 +36,15 @@ export class FormFieldComponent implements OnInit {
 
   }
 
-  onReferenceIdsEmitter(itemData: FormField) {
-    this.formFieldService.onReferenceIdsEmitter(itemData, this.rootId);
-  }
+  // onReferenceIdsEmitter(itemData: FormField) {
+  //   this.formFieldService.onReferenceIdsEmitter(itemData, this.rootId);
+  // }
 
-  onFormulaIdsEmitter(event: FormulaEmitterInput) {
-    this.formFieldService.onFormulaEmitter(event, this.rootId);
-  }
+  // onFormulaIdsEmitter(event: FormulaEmitterInput) {
+  //   this.formFieldService.onFormulaEmitter(event, this.rootId);
+  // }
 
-  onCheckValidRoot() {
-    this.formFieldService.setValidForRoot(this.rootId);
-  }
+  // onCheckValidRoot() {
+  //   this.formFieldService.setValidForRoot(this.rootId);
+  // }
 }

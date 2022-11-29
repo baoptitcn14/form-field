@@ -1,4 +1,4 @@
-<ng-container [ngSwitch]="itemData?.type">
+<ng-container [ngSwitch]="itemData.type">
   <!-- GROUP -->
   <ng-container *ngSwitchCase="'group'">
     <m-form-field [rootData]="itemData" [rootId]="rootId"></m-form-field>
@@ -7,45 +7,40 @@
   <!-- TEXT -->
   <ng-container *ngSwitchCase="'text'">
     <m-text
-      [itemData]="itemData"
       [(ngModel)]="itemData.value"
+      [itemData]="itemData"
+      [rootId]="rootId"
       [disabled]="itemData.disabled"
-      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
-      (validEmitter)="onCheckValidRootEmitter()"
     ></m-text>
   </ng-container>
 
   <!-- NUMBER -->
   <ng-container *ngSwitchCase="'number'">
     <m-number
-      [itemData]="itemData"
       [(ngModel)]="itemData.value"
+      [itemData]="itemData"
+      [rootId]="rootId"
       [disabled]="itemData.disabled"
-      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
-      (validEmitter)="onCheckValidRootEmitter()"
     ></m-number>
   </ng-container>
 
   <!-- DATE -->
   <ng-container *ngSwitchCase="'date'">
     <m-date
-      [itemData]="itemData"
       [(ngModel)]="itemData.value"
+      [itemData]="itemData"
+      [rootId]="rootId"
       [disabled]="itemData.disabled"
-      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
-      (validEmitter)="onCheckValidRootEmitter()"
     ></m-date>
   </ng-container>
 
   <!-- SELECT -->
   <ng-container *ngSwitchCase="'select'">
     <m-select
-      [itemData]="itemData"
       [(ngModel)]="itemData.value"
+      [itemData]="itemData"
+      [rootId]="rootId"
       [disabled]="itemData.disabled"
-      (referenceIdsEmitter)="onReferenceIdsEmitter($event)"
-      (formulaIdsEmitter)="onFormulaIdsEmitter($event)"
-      (validEmitter)="onCheckValidRootEmitter()"
     ></m-select>
   </ng-container>
 

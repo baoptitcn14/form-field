@@ -1,5 +1,6 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
+import { FormFieldService } from 'src/app/form-field.service';
 import { Errors, FormField } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 
@@ -22,21 +23,27 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 })
 export class MTextComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
-  @Output() formulaIdsEmitter = new EventEmitter();
-  @Output() validEmitter = new EventEmitter();
+  @Input() rootId: string | undefined;
 
   errors: Errors | undefined;
 
+  constructor(formFieldService: FormFieldService) {
+    super(formFieldService);
+  }
+
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
-    this.validEmitter.emit(this.errors ? false : true);
+    this.proccessValidEmitter(this.rootId);
     return this.errors ? this.errors : null;
   }
 
   onChangeValue(): void {
     this.handler();
 
-    if (this.itemData?.formulaRefIds)
-      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.formulaIdsEmitter);
+    if (this.itemData?.formulaRefIds && this.rootId)
+      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.rootId);
+
+    if (this.itemData?.compairWithRefIds)
+      this.proccessCompairWithRefIds(this.itemData.compairWithRefIds, this.itemData.id);
   }
 }

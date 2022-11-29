@@ -1,5 +1,6 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors, Validator } from '@angular/forms';
+import { FormFieldService } from 'src/app/form-field.service';
 import { FormField, Errors, FormulaEmitterInput } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 
@@ -22,16 +23,19 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 })
 
 export class MNumberComponent extends MBaseInput implements Validator {
-  @Input() itemData: FormField | any;
-  @Output() formulaIdsEmitter = new EventEmitter<FormulaEmitterInput>();
-  @Output() validEmitter = new EventEmitter();
+  @Input() itemData: FormField | undefined;
+  @Input() rootId: string | undefined;
   errors: Errors | undefined;
+
+  constructor(formFieldService: FormFieldService) {
+    super(formFieldService);
+  }
 
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
 
-    if (this.itemData.min != undefined) {
-      if (parseFloat(control.value) < parseFloat(this.itemData.min)) {
+    if (this.itemData?.min != undefined) {
+      if (parseFloat(control.value) < parseFloat(this.itemData?.min + '')) {
         if (!this.errors) this.errors = { min: undefined };
         this.errors.min = 'Giới hạn nhỏ nhất là ' + this.itemData.min;
         this.addError('min', this.errors.min);
@@ -40,24 +44,24 @@ export class MNumberComponent extends MBaseInput implements Validator {
       }
     }
 
-    if (this.itemData.max != undefined) {
-      if (parseFloat(control.value) > parseFloat(this.itemData.max)) {
+    if (this.itemData?.max != undefined) {
+      if (parseFloat(control.value) > parseFloat(this.itemData?.max + '')) {
         if (!this.errors) this.errors = { max: undefined };
-        this.errors.max = 'Giới hạn lớn nhất là ' + this.itemData.max;
+        this.errors.max = 'Giới hạn lớn nhất là ' + this.itemData?.max;
         this.addError('max', this.errors.max);
       } else {
         this.deleteErrorByKey('max');
       }
     }
     this.itemData!.valid = this.errors ? false : true;
-    this.validEmitter.emit(this.errors ? false : true);
+    this.proccessValidEmitter(this.rootId);
     return this.errors ? this.errors : null;
   }
 
   onChangeValue(): void {
     this.handler();
 
-    if (this.itemData?.formulaRefIds)
-      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.formulaIdsEmitter);
+    if (this.itemData?.formulaRefIds && this.rootId)
+      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.rootId);
   }
 }

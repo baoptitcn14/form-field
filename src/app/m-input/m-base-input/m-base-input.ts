@@ -1,11 +1,14 @@
 import { EventEmitter } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
+import { FormFieldService } from "src/app/form-field.service";
 import { Errors, FormField, FormulaEmitterInput } from "src/app/form-field/form-field";
 
 export class MBaseInput implements ControlValueAccessor {
     isDisabled: boolean = false;
     value: string | number | Date | undefined;
     listErrors: { key: string, message: string }[] = [];
+
+    constructor(private formFieldService: FormFieldService) { }
 
     onChange: ((data: any) => void) | undefined;
 
@@ -29,13 +32,24 @@ export class MBaseInput implements ControlValueAccessor {
             this.onChange(this.value);
         }
     }
-
-    protected proccessFormulaRefIds(formulaRefIds: string[], id: string | undefined, emitter?: EventEmitter<any>) {
-        emitter?.emit({
+    protected proccessFormulaRefIds(formulaRefIds: string[], id: string | undefined, rootId: string) {
+        this.formFieldService.onFormulaEmitter({
             formulaRefIds: formulaRefIds,
             id: id,
             value: this.value
-        } as FormulaEmitterInput);
+        } as FormulaEmitterInput, rootId)
+    }
+
+    protected referenceIdsEmitter(itemData: FormField, rootId: string) {
+        this.formFieldService.onReferenceIdsEmitter(itemData, rootId);
+    }
+
+    protected proccessCompairWithRefIds(compairWithRefIds: string[], id: string | undefined, emitter?: EventEmitter<any>) {
+
+    }
+
+    protected proccessValidEmitter(rootId: string | undefined) {
+        this.formFieldService.setValidForRoot(rootId);
     }
 
     protected baseValidate(itemData: FormField | undefined, controlValue: any) {

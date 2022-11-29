@@ -1,36 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormFieldService } from 'src/app/form-field.service';
 import { FormulaEmitterInput, FormField } from 'src/app/form-field/form-field';
+import { MBaseInput } from './m-base-input';
 
 @Component({
   selector: 'm-base-input',
   templateUrl: './m-base-input.component.html',
   styleUrls: ['./m-base-input.component.scss']
 })
-export class MBaseInputComponent implements OnInit {
-  @Input() itemData: FormField | any;
+
+export class MBaseInputComponent {
+  @Input() itemData: FormField = {
+    id: '',
+    code: '',
+    index: 0,
+    name: '',
+    type: undefined
+  };
   @Input() rootId: string | undefined;
-  @Output() referenceIdsEmitter = new EventEmitter();
-  @Output() formulaRefIdsEmitter = new EventEmitter();
-  @Output() validEmitter = new EventEmitter();
-
-  constructor(
-    private formFieldService: FormFieldService
-  ) { }
-
-  ngOnInit(): void {
-  }
-
-  onReferenceIdsEmitter(itemData: FormField) {
-    this.referenceIdsEmitter.emit(itemData);
-  }
-
-  onFormulaIdsEmitter(event: FormulaEmitterInput) {
-    this.formulaRefIdsEmitter.emit(event);
-  }
-
-  onCheckValidRootEmitter() {
-    this.validEmitter.emit();
-  }
-
 }

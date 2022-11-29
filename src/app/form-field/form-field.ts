@@ -6,12 +6,13 @@ export class FormField {
     type: "form" | "group" | "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | undefined;
     value?: string | number | Date | undefined;
     class?: string;
-    disabled?: boolean = false;
+    disabled?: any = false;
     readonly?: boolean = false;
     required?: boolean = false;
     valid?: boolean = true;
     icon?: string;
     formulaRefIds?: string[];
+    compairWithRefIds?: string[];
     // text | number
     regex?: RegExp;
     // text | number
@@ -43,4 +44,10 @@ export class FormulaEmitterInput {
     value: string | number | Date | undefined;
     id: string | undefined;
 }
+
+// export class FormulaEmitterInput {
+//     formulaRefIds: string[] | undefined;
+//     value: string | number | Date | undefined;
+//     id: string | undefined;
+// }
 

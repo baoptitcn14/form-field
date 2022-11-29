@@ -1,7 +1,9 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors, Validator } from '@angular/forms';
+import { FormFieldService } from 'src/app/form-field.service';
 import { Errors, FormulaEmitterInput, FormField } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
+import { MBaseInputComponent } from '../m-base-input/m-base-input.component';
 
 @Component({
   selector: 'm-date',
@@ -21,15 +23,19 @@ import { MBaseInput } from '../m-base-input/m-base-input';
   ]
 })
 export class MDateComponent extends MBaseInput implements Validator {
-  @Input() itemData: FormField | any;
-  @Output() formulaIdsEmitter = new EventEmitter<FormulaEmitterInput>();
-  @Output() validEmitter = new EventEmitter();
+  @Input() itemData: FormField | undefined;
+  @Input() rootId: string | undefined;
 
   errors: Errors | undefined;
 
+  constructor(formFieldService: FormFieldService) {
+    super(formFieldService);
+  }
+
+
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
-    this.validEmitter.emit(this.errors ? false : true);
+    this.proccessValidEmitter(this.rootId);
     return this.errors ? this.errors : null;
   }
 
@@ -42,7 +48,7 @@ export class MDateComponent extends MBaseInput implements Validator {
   onChangeValue(): void {
     this.handler();
 
-    if (this.itemData?.formulaRefIds)
-      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.formulaIdsEmitter);
+    if (this.itemData?.formulaRefIds && this.rootId)
+      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.rootId);
   }
 }
