@@ -18,6 +18,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { HighlighterPipe } from './highlighter.pipe';
 import { MGroupComponent } from './m-input/m-group/m-group.component';
+import { MCheckboxComponent } from './m-input/m-checkbox/m-checkbox.component';
+import { MRadioComponent } from './m-input/m-radio/m-radio.component';
+import { MButtonComponent } from './m-input/m-button/m-button.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { MGroupComponent } from './m-input/m-group/m-group.component';
     MTableComponent,
     MBaseInputComponent,
     HighlighterPipe,
-    MGroupComponent
+    MGroupComponent,
+    MCheckboxComponent,
+    MRadioComponent,
+    MButtonComponent
   ],
   imports: [
     BrowserModule,

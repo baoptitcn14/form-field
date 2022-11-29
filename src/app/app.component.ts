@@ -183,6 +183,15 @@ export class AppComponent implements OnDestroy {
         formulaRefIds: ['f6']
       },
       {
+        id: 'f3a',
+        code: 'gioitinh',
+        index: 2,
+        name: 'Giới tính nam',
+        type: 'checkbox',
+        value: undefined,
+        class: 'col-12 col-md-6'
+      },
+      {
         id: 'f4',
         code: 'ngay',
         index: 5,
