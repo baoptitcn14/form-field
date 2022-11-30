@@ -1,5 +1,20 @@
 <ng-container *ngFor="let c of itemData?.items">
-    <m-radio (valueChangeEmitter)="onChangeValue()" [(ngModel)]="c.value" [itemData]="c" [rootId]="rootId"
-        [disabled]="c.disabled">
-    </m-radio>
+  <!-- <m-radio (valueChangeEmitter)="onChangeValue()" [itemData]="c"> </m-radio> -->
+  <div class="form-check">
+    <input
+      type="radio"
+      [readOnly]="c?.readonly"
+      [value]="c.value"
+      (change)="onChangeValue()"
+      [(ngModel)]="value"
+      type="radio"
+      name="{{ c?.inputName }}"
+      class="form-check-input"
+      id="{{ c?.id }}"
+    />
+
+    <label class="form-check-label" for="{{ c?.id }}">
+      {{ c?.name }}
+    </label>
+  </div>
 </ng-container>

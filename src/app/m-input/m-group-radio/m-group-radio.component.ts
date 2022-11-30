@@ -38,8 +38,12 @@ export class MGroupRadioComponent extends MBaseInput implements Validator {
   }
 
   onChangeValue(): void {
-    this.value = this.itemData?.items?.find(e => e.value == true)?.id;
-    this.handler();
+    if (this.itemData) {
+      console.log(this.itemData)
+      console.log(this.value)
+      // this.value = this.itemData.items?.find(e => e.value == true)?.id;
+      this.handler();
+    }
   }
 
 }

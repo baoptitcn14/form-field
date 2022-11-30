@@ -241,7 +241,7 @@ export class AppComponent implements OnDestroy {
         index: 2,
         name: 'radio 1',
         type: 'group_radio',
-        value: undefined,
+        value: 'undefined',
         class: 'col-12 col-md-6',
         items: [
           {
@@ -249,24 +249,27 @@ export class AppComponent implements OnDestroy {
             code: 'raaa1',
             index: 0,
             name: 'rd 1',
-            type: undefined,
-            value: undefined
+            type: 'radio',
+            value: 'undefined',
+            inputName: 'rin'
           },
           {
             id: 'raa1ll1',
             code: 'raaa11',
             index: 0,
             name: 'rd 2',
-            type: undefined,
-            value: undefined
+            type: 'radio',
+            value: 'undefined1',
+            inputName: 'rin'
           },
           {
             id: 'raa1ll2',
             code: 'raaa112',
             index: 0,
             name: 'rd 3',
-            type: undefined,
-            value: undefined
+            type: 'radio',
+            value: 'undefined2',
+            inputName: 'rin'
           }
         ]
       },
