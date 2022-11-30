@@ -23,6 +23,7 @@ import { MButtonComponent } from './m-input/m-button/m-button.component';
 import { MGroupCheckboxComponent } from './m-input/m-group-checkbox/m-group-checkbox.component';
 import { MGroupRadioComponent } from './m-input/m-group-radio/m-group-radio.component';
 import { MDateRangeComponent } from './m-input/m-date-range/m-date-range.component';
+import { MFilesComponent } from './m-input/m-files/m-files.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MDateRangeComponent } from './m-input/m-date-range/m-date-range.compone
     MButtonComponent,
     MGroupCheckboxComponent,
     MGroupRadioComponent,
-    MDateRangeComponent
+    MDateRangeComponent,
+    MFilesComponent
   ],
   imports: [
     BrowserModule,

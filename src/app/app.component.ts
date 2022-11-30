@@ -319,6 +319,15 @@ export class AppComponent implements OnDestroy {
         formulaRefIds: ['f6']
       },
       {
+        id: 'f555',
+        code: 'files1',
+        index: 92,
+        name: 'files',
+        type: 'file',
+        value: undefined,
+        class: 'col-12 col-md-6'
+      },
+      {
         id: 'f5',
         code: 'table',
         index: 99,
@@ -350,95 +359,6 @@ export class AppComponent implements OnDestroy {
               }
             ]
           }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'abbbb',
-    code: 'AA',
-    index: 0,
-    name: '',
-    type: 'form',
-    class: 'row',
-    items: [
-      {
-        id: 'g1',
-        code: 'group1',
-        index: 1,
-        name: 'group 1',
-        class: 'col-12 col-md-12',
-        type: 'group',
-        alignName: 'center',
-        items: [
-          {
-            id: 'g1_i1',
-            name: 'g1 i1',
-            code: 'sonha',
-            type: 'text',
-            class: 'col-12 col-md-6',
-            index: 0,
-            value: undefined
-          },
-          {
-            id: 'g1_i2',
-            name: 'g1 i2',
-            code: 'diachi',
-            type: 'text',
-            class: 'col-12 col-md-6',
-            index: 1,
-            value: undefined,
-            formulaRefIds: ['f6']
-          },
-          {
-            id: 'g1_i3',
-            code: 'g1_i3',
-            name: 'g1 i3',
-            type: 'select',
-            class: 'col-12 col-md-12',
-            index: 2,
-            value: undefined,
-            dataSource: [
-              {
-                id: 't1',
-                name: 'UI'
-              },
-              {
-                id: 't2',
-                name: 'T 2'
-              }
-            ],
-            dataSourceRefIds: [{ id: 'f2', key: 'refId' }]
-          },
-          {
-            id: 'g1_1',
-            name: 'g1_1',
-            code: 'g1_1',
-            type: 'group',
-            class: 'col-12 col-md-12',
-            index: 0,
-            items: [
-              {
-                id: 'g1_1_i1',
-                name: 'g1_1 i1',
-                code: 'g1_1_i1',
-                type: 'text',
-                class: 'col-12 col-md-6',
-                index: 0,
-                value: undefined
-              },
-              {
-                id: 'g1_1_i2',
-                name: 'g1_1 i2',
-                code: 'g1_1_i2',
-                type: 'text',
-                class: 'col-12 col-md-6',
-                index: 1,
-                value: undefined,
-                formulaRefIds: ['f6']
-              },
-            ]
-          },
         ]
       }
     ]
