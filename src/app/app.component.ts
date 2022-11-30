@@ -286,6 +286,18 @@ export class AppComponent implements OnDestroy {
         formulaRefIds: ['f6']
       },
       {
+        id: 'f422211',
+        code: 'ngay-range',
+        index: 5,
+        name: 'Ngày Range',
+        type: 'date-range',
+        value: undefined,
+        disabled: false,
+        class: 'col-12 col-md-6',
+        required: true,
+        formulaRefIds: ['f6']
+      },
+      {
         id: 'f6',
         code: 'diachi',
         index: 6,
@@ -294,7 +306,7 @@ export class AppComponent implements OnDestroy {
         value: undefined,
         disabled: true,
         class: 'col-12 col-md-12',
-        formular: 'g1_1_i2+f4+f3+f555+f2+f1+g1_i2'
+        formular: 'g1_1_i2+f4+f3+f555+f2+f1+g1_i2+f422211'
       },
       {
         id: 'f555',
@@ -443,6 +455,6 @@ export class AppComponent implements OnDestroy {
 
   onAction(obj: FormField) {
     this.result = this.formFieldService.getResult(obj, {} as any);
-    console.log(this.formFieldService.allItem)
+    console.log(this.result);
   }
 }

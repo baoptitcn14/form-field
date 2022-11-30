@@ -3,7 +3,7 @@ export class FormField {
     index: number | undefined;
     name: string | undefined;
     code: string | undefined;
-    type: "form" | "group" | "text" | "number" | "select" | "date" | "table" | "checkbox" | "radio" | "group_radio" | "group_checkbox" | undefined;
+    type: "form" | "group" | "text" | "number" | "select" | "date" | "date-range" | "table" | "checkbox" | "radio" | "group_radio" | "group_checkbox" | undefined;
     value?: any;
     class?: string;
     disabled?: any = false;

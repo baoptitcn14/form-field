@@ -10,7 +10,7 @@ import { MSelectComponent } from './m-input/m-select/m-select.component';
 import { MDateComponent } from './m-input/m-date/m-date.component';
 import { MTableComponent } from './m-input/m-table/m-table.component';
 import { MBaseInputComponent } from './m-input/m-base-input/m-base-input.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import material modules
@@ -22,6 +22,7 @@ import { MCheckboxComponent } from './m-input/m-checkbox/m-checkbox.component';
 import { MButtonComponent } from './m-input/m-button/m-button.component';
 import { MGroupCheckboxComponent } from './m-input/m-group-checkbox/m-group-checkbox.component';
 import { MGroupRadioComponent } from './m-input/m-group-radio/m-group-radio.component';
+import { MDateRangeComponent } from './m-input/m-date-range/m-date-range.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +39,12 @@ import { MGroupRadioComponent } from './m-input/m-group-radio/m-group-radio.comp
     MCheckboxComponent,
     MButtonComponent,
     MGroupCheckboxComponent,
-    MGroupRadioComponent
+    MGroupRadioComponent,
+    MDateRangeComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,

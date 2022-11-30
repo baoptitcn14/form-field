@@ -31,13 +31,13 @@ export class FormFieldService {
   }
 
   getValueById(id: string, rootId: string) {
-
     if (!rootId || !this.allItem[rootId]) {
       console.log('rootId || allItem[rootId] is undefined');
       return undefined;
     }
 
     let item = this.allItem[rootId].find(x => x.id == id);
+
     if (item) {
       const type = typeof (item.value);
 
@@ -45,6 +45,18 @@ export class FormFieldService {
         return this.getDisplayNameByValue(item, item.value);
       } else if (this.service.isTypeOfDate(item.value)) {
         return this.service.formatDate(item.value as Date);
+      } else if (item.type == 'date-range' && type === 'object') {
+        let result = null;
+
+        if (item.value.start) {
+          result = this.service.formatDate(item.value.start as Date) + ' - ';
+        }
+
+        if (item.value.end) {
+          result += result ? this.service.formatDate(item.value.end as Date) : (' - ' + this.service.formatDate(item.value.end as Date));
+        }
+
+        return result;
       }
       return null;
     }

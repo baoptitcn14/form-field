@@ -17,7 +17,6 @@
     [matDatepicker]="picker"
     [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
     [disabled]="isDisabled"
-    [readOnly]="itemData?.readonly"
     [(ngModel)]="value"
     (ngModelChange)="onChangeValue()"
     id="{{ itemData?.id }}"

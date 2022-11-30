@@ -22,6 +22,12 @@
     </m-date>
   </ng-container>
 
+  <!-- DATE RANGE -->
+  <ng-container *ngSwitchCase="'date-range'">
+    <m-date-range [(ngModel)]="itemData.value" [itemData]="itemData" [rootId]="rootId" [disabled]="itemData.disabled">
+    </m-date-range>
+  </ng-container>
+
   <!-- SELECT -->
   <ng-container *ngSwitchCase="'select'">
     <m-select [(ngModel)]="itemData.value" [itemData]="itemData" [rootId]="rootId" [disabled]="itemData.disabled">
