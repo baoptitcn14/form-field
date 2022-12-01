@@ -5,7 +5,7 @@ import { Errors, FormField, FormulaEmitterInput } from "src/app/form-field/form-
 
 export class MBaseInput implements ControlValueAccessor {
     isDisabled: boolean = false;
-    value: any;
+    value: any | any[];
     listErrors: { key: string, message: string }[] = [];
 
     constructor(private formFieldService: FormFieldService) { }
@@ -13,7 +13,7 @@ export class MBaseInput implements ControlValueAccessor {
     onChange: ((data: any) => void) | undefined;
 
     writeValue(data: any): void {
-        this.value = data ? data : '';
+        this.value = data;
     }
 
     registerOnChange(fn: any): void {

@@ -24,6 +24,7 @@
     "bootstrap": "^4.6.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.1",
+    "ngx-image-compress": "^13.1.13",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

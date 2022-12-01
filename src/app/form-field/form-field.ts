@@ -31,6 +31,8 @@ export class FormField {
     items?: FormField[] | undefined;
     // group
     alignName?: "center" | "left" | "right";
+    //file, select
+    multiple?: boolean;
     
 }
 

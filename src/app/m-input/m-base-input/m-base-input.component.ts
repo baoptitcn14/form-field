@@ -18,4 +18,5 @@ export class MBaseInputComponent {
     type: undefined
   };
   @Input() rootId: string | undefined;
+
 }

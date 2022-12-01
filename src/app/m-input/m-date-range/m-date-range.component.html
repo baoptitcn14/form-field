@@ -37,8 +37,9 @@
       matStartDate
       formControlName="start"
       placeholder="Start date"
+      (click)="picker.open()"
     />
-    <input readonly matEndDate formControlName="end" placeholder="End date" />
+    <input readonly matEndDate formControlName="end"  (click)="picker.open()" placeholder="End date" />
   </mat-date-range-input>
 
   <!-- fix css -->

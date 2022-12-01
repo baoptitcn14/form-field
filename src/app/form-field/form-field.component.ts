@@ -25,6 +25,9 @@ export class FormFieldComponent implements OnInit {
         if (e.formular && e.value === undefined) {
           e.value = this.formFieldService.getValueByFormula(e.formular, this.rootId);
         }
+        if (e.type == 'file' && e.value === undefined) {
+          e.value = [];
+        }
       });
     }
 
@@ -35,16 +38,4 @@ export class FormFieldComponent implements OnInit {
     });
 
   }
-
-  // onReferenceIdsEmitter(itemData: FormField) {
-  //   this.formFieldService.onReferenceIdsEmitter(itemData, this.rootId);
-  // }
-
-  // onFormulaIdsEmitter(event: FormulaEmitterInput) {
-  //   this.formFieldService.onFormulaEmitter(event, this.rootId);
-  // }
-
-  // onCheckValidRoot() {
-  //   this.formFieldService.setValidForRoot(this.rootId);
-  // }
 }

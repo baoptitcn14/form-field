@@ -325,7 +325,8 @@ export class AppComponent implements OnDestroy {
         name: 'files',
         type: 'file',
         value: undefined,
-        class: 'col-12 col-md-6'
+        class: 'col-12 col-md-6',
+        multiple: true
       },
       {
         id: 'f5',
