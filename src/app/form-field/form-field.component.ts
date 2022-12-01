@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormFieldService } from '../form-field.service';
-import { ServicesService } from '../services.service';
-import { FormField, FormulaEmitterInput } from './form-field';
+import { FormFieldService } from './form-field.service';
+import { FormField } from './form-field';
 
 @Component({
   selector: 'm-form-field',

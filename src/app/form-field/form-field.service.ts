@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormField, FormulaEmitterInput } from './form-field/form-field';
-import { ServicesService } from './services.service';
+import { FormField, FormulaEmitterInput } from './form-field';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +7,6 @@ import { ServicesService } from './services.service';
 export class FormFieldService {
 
   allItem: { [key: string]: FormField[] | [] } = {};
-
-  constructor(
-    private service: ServicesService
-  ) { }
 
   getValueByFormula(formular: string | undefined, rootId: string | undefined) {
     if (!formular || !rootId) {
@@ -43,17 +38,17 @@ export class FormFieldService {
 
       if (type == 'string' || type == "number") {
         return this.getDisplayNameByValue(item, item.value);
-      } else if (this.service.isTypeOfDate(item.value)) {
-        return this.service.formatDate(item.value as Date);
+      } else if (this.isTypeOfDate(item.value)) {
+        return this.formatDate(item.value as Date);
       } else if (item.type == 'date-range' && type === 'object') {
         let result = null;
 
         if (item.value.start) {
-          result = this.service.formatDate(item.value.start as Date) + ' - ';
+          result = this.formatDate(item.value.start as Date) + ' - ';
         }
 
         if (item.value.end) {
-          result += result ? this.service.formatDate(item.value.end as Date) : (' - ' + this.service.formatDate(item.value.end as Date));
+          result += result ? this.formatDate(item.value.end as Date) : (' - ' + this.formatDate(item.value.end as Date));
         }
 
         return result;
@@ -174,9 +169,22 @@ export class FormFieldService {
     else
       item.dataSource = item._dataSource?.filter(z => z[key] == valueFilter);
   }
-}
 
-interface AllItems {
-  id: string | undefined;
-  items: FormField[]
+  private isTypeOfDate(input: any) {
+    if (Object.prototype.toString.call(input) === "[object Date]")
+      return true;
+    return false;
+  }
+
+  private padTo2Digits(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+
+  private formatDate(date: Date) {
+    return [
+      this.padTo2Digits(date.getDate()),
+      this.padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join('/');
+  }
 }

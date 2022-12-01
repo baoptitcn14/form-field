@@ -1,8 +1,8 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors, Validator } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { FormFieldService } from 'src/app/form-field.service';
+import { FormFieldService } from 'src/app/form-field/form-field.service';
 import { FormField, Errors } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 
@@ -32,7 +32,7 @@ export class MFilesComponent extends MBaseInput implements Validator, OnInit {
 
   constructor(
     formFieldService: FormFieldService,
-    private imageCompress: NgxImageCompressService,
+    @Inject(NgxImageCompressService) private imageCompress: NgxImageCompressService,
     private sanitizer: DomSanitizer
   ) {
     super(formFieldService);

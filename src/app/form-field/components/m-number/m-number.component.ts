@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, AbstractControl, ValidationErrors, Validator } from '@angular/forms';
-import { FormFieldService } from 'src/app/form-field.service';
+import { FormFieldService } from 'src/app/form-field/form-field.service';
 import { FormField, Errors, FormulaEmitterInput } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 

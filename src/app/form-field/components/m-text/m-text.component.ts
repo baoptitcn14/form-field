@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { FormFieldService } from 'src/app/form-field.service';
+import { FormFieldService } from 'src/app/form-field/form-field.service';
 import { Errors, FormField } from 'src/app/form-field/form-field';
 import { MBaseInput } from '../m-base-input/m-base-input';
 

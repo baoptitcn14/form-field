@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormFieldService } from './form-field.service';
+import { FormFieldService } from './form-field/form-field.service';
 import { FormField } from './form-field/form-field';
 
 @Component({

@@ -1,6 +1,6 @@
 import { EventEmitter } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
-import { FormFieldService } from "src/app/form-field.service";
+import { FormFieldService } from "src/app/form-field/form-field.service";
 import { Errors, FormField, FormulaEmitterInput } from "src/app/form-field/form-field";
 
 export class MBaseInput implements ControlValueAccessor {
