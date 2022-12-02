@@ -27,7 +27,7 @@
         .dropdown-item {
             .highlighted-text {
                 background-color: violet;
-        
+
                 span:not(:has(.highlighted-text)) {
                     background-color: #ffffff;
                 }
@@ -51,4 +51,3 @@
         }
     }
 }
-

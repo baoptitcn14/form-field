@@ -8,7 +8,7 @@ export class MBaseInput implements ControlValueAccessor {
     value: any | any[];
     listErrors: { key: string, message: string }[] = [];
 
-    constructor(private formFieldService: FormFieldService) { }
+    constructor(protected formFieldService: FormFieldService) { }
 
     onChange: ((data: any) => void) | undefined;
 

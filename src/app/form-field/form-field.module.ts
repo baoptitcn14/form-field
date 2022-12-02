@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MMultipleSelectComponent } from './components/m-multiple-select/m-multiple-select.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MFilesComponent,
 
     // pipe
-    HighlighterPipe
+    HighlighterPipe,
+      MMultipleSelectComponent
   ],
   imports: [
     CommonModule,

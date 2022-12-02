@@ -59,6 +59,17 @@
     </m-select>
   </ng-container>
 
+  <!-- SELECT -->
+  <ng-container *ngSwitchCase="'multiple-select'">
+    <m-multiple-select
+      [(ngModel)]="itemData.value"
+      [itemData]="itemData"
+      [rootId]="rootId"
+      [disabled]="itemData.disabled"
+    >
+    </m-multiple-select>
+  </ng-container>
+
   <!-- CHECKBOX -->
   <ng-container *ngSwitchCase="'checkbox'">
     <m-checkbox

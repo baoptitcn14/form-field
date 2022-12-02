@@ -40,6 +40,9 @@ export class MGroupCheckboxComponent extends MBaseInput implements Validator {
 
   onChangeValue(): void {
     this.value = this.itemData?.items?.filter(e => e.value == true).map(m => m.id);
+
+    if (this.value.length == 0)
+      this.value = undefined
     this.handler();
   }
 

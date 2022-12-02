@@ -1,4 +1,4 @@
-<div class="form-group form-check">
+<div class="form-group {{ itemData?.inline ? 'form-check-inline' : 'form-check' }}">
   <input
     [disabled]="isDisabled"
     [readOnly]="itemData?.readonly"

@@ -26,7 +26,7 @@
       id="{{ itemData?.id }}"
     />
 
-    <div class="dropdown-menu w-100">
+    <div class="dropdown-menu w-100 hold-on-click">
       <a class="dropdown-item" *ngIf="itemData?.search">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -48,9 +48,9 @@
       <a
         *ngFor="let option of listOption"
         class="dropdown-item"
-        [ngClass]="{ active: option.active}"
+        [ngClass]="{ active: option.active }"
         (click)="onSelect(option)"
-        [innerHTML]="option.name | highlighter: search"
+        [innerHTML]="option.name | highlighter : search"
       ></a>
     </div>
   </div>
@@ -70,25 +70,3 @@
     {{ error.message }}
   </small>
 </div>
-<!-- 
-<div class="navbar">
-  <div class="dropdown">
-    <input
-      type="text"
-      data-toggle="dropdown"
-      aria-expanded="false"
-      class="form-control"
-      [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
-      [disabled]="isDisabled"
-      [(ngModel)]="value"
-      (ngModelChange)="handler()"
-      id="{{ itemData?.id }}"
-    />
-
-    <div class="dropdown-menu">
-      <a *ngFor="let option of itemData.dataSource" class="dropdown-item">
-        {{ option.name }}
-      </a>
-    </div>
-  </div>
-</div> -->

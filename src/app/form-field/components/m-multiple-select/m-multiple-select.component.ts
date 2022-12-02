@@ -1,28 +1,27 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { FormFieldService } from 'src/app/form-field/form-field.service';
-import { FormField, Errors } from 'src/app/form-field/form-field';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormField, Errors } from '../../form-field';
+import { FormFieldService } from '../../form-field.service';
 import { MBaseInput } from '../m-base-input/m-base-input';
 
 @Component({
-  selector: 'm-select',
-  templateUrl: './m-select.component.html',
-  styleUrls: ['./m-select.component.scss'],
+  selector: 'm-multiple-select',
+  templateUrl: './m-multiple-select.component.html',
+  styleUrls: ['./m-multiple-select.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MSelectComponent),
+      useExisting: forwardRef(() => MMultipleSelectComponent),
       multi: true
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => MSelectComponent),
+      useExisting: forwardRef(() => MMultipleSelectComponent),
       multi: true
     }
   ]
 })
-export class MSelectComponent extends MBaseInput implements Validator {
-
+export class MMultipleSelectComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
   @Input() rootId: string | undefined;
 
