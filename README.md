@@ -25,3 +25,26 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## ============================== begin Bao comment ==============================
+
+## package need install
+
+"@popperjs/core": "^2.11.6"
+"bootstrap": "^4.6.2",
+"font-awesome": "^4.7.0"
+"jquery": "^3.6.1"
+"ngx-image-compress": "^13.1.13"
+
+## command need run
+
+ng add @angular/material -> yes -> yes
+
+## import FormFieldModule into app.module
+
+## import this code below into providers [] in app.module
+MatDatepickerModule,
+MatNativeDateModule,
+{ provide: MAT_DATE_LOCALE, useValue: 'vi-VN' }
+
+## ============================== end Bao comment ==============================
