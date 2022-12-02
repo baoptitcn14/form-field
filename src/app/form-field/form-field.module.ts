@@ -24,6 +24,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MMultipleSelectComponent } from './components/m-multiple-select/m-multiple-select.component';
+import { ClickOutSideDirective } from './directives/click-out-side.directive';
 
 @NgModule({
   declarations: [
@@ -42,10 +43,13 @@ import { MMultipleSelectComponent } from './components/m-multiple-select/m-multi
     MGroupRadioComponent,
     MDateRangeComponent,
     MFilesComponent,
+    MMultipleSelectComponent,
 
     // pipe
     HighlighterPipe,
-      MMultipleSelectComponent
+
+    //directives
+    ClickOutSideDirective
   ],
   imports: [
     CommonModule,

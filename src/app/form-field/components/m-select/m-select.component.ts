@@ -41,7 +41,6 @@ export class MSelectComponent extends MBaseInput implements Validator {
 
   onSelectAll() {
     if (this.value) {
-      this.itemData?.dataSource?.forEach((e: any) => e.active = false);
       this.value = undefined;
       this.handler();
 
@@ -54,9 +53,6 @@ export class MSelectComponent extends MBaseInput implements Validator {
   }
 
   onSelect(option: any) {
-    if (option.active) return;
-
-    this.itemData?.dataSource?.forEach((e: any) => e.active = false);
 
     this.value = option.id;
 

@@ -9,7 +9,7 @@
     </span>
   </div>
 
-  <div class="dropdown">
+  <div class="dropdown" #dd>
     <input
       type="text"
       data-toggle="dropdown"
@@ -22,11 +22,16 @@
       }"
       [disabled]="isDisabled"
       readonly
-      [value]="displayValue"
       id="{{ itemData?.id }}"
     />
 
-    <div class="dropdown-menu w-100 hold-on-click">
+    <div
+      class="dropdown-menu w-100 hold-on-click"
+      #ddm
+      clickOutside
+      (outSide)="out($event, dd, ddm)"
+      (inSide)="in($event, dd, ddm)"
+    >
       <a class="dropdown-item" *ngIf="itemData?.search">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -39,19 +44,20 @@
       </a>
       <a
         class="dropdown-item"
-        [ngClass]="{ active: !value }"
+        [ngClass]="{ active: this.isSelectAll }"
         *ngIf="itemData?.selectAll && !search"
         (click)="onSelectAll()"
       >
         Tất cả
       </a>
       <a
-        *ngFor="let option of listOption"
+        *ngFor="let option of listOption; let index = index"
         class="dropdown-item"
         [ngClass]="{ active: option.active }"
         (click)="onSelect(option)"
-        [innerHTML]="option.name | highlighter : search"
-      ></a>
+      >
+        <span [innerHTML]="option.name | highlighter : search"></span>
+      </a>
     </div>
   </div>
 

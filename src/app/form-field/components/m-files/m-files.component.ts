@@ -82,11 +82,6 @@ export class MFilesComponent extends MBaseInput implements Validator, OnInit {
     return this.errors ? this.errors : null;
   }
 
-  a(file: FileDto) {
-    console.log(file);
-    // window.open(file.webkitRelativePath, 'blank');
-  }
-
   getThumbnailFile(file: any) {
     if (file.type.indexOf('image') != -1) {
       return file.id ? file.fileUrl : `data:${file.type};base64,${file.data}`;

@@ -25,8 +25,10 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
   @Input() rootId: string | undefined;
 
+  first: boolean = true;
   errors: Errors | undefined;
   search: string | undefined;
+  isSelectAll: boolean = false;
 
   constructor(formFieldService: FormFieldService) {
     super(formFieldService);
@@ -39,25 +41,44 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
   }
 
   onSelectAll() {
-    if (this.value) {
-      this.itemData?.dataSource?.forEach((e: any) => e.active = false);
-      this.value = undefined;
-      this.handler();
+    if (this.value === undefined) this.value = [];
 
-      if (this.itemData?.formulaRefIds && this.rootId)
-        this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.rootId);
+    this.isSelectAll = !this.isSelectAll;
+    this.itemData?.dataSource?.forEach((e: any) => e.active = this.isSelectAll);
+    this.value = this.isSelectAll
+      ? this.itemData?.dataSource?.filter(e => e.active)
+      : undefined;
 
-      if (this.itemData?.dataSourceRefIds && this.rootId)
-        this.referenceIdsEmitter(this.itemData, this.rootId);
-    }
+    this.handler();
+
+    if (this.itemData?.formulaRefIds && this.rootId)
+      this.proccessFormulaRefIds(this.itemData.formulaRefIds, this.itemData.id, this.rootId);
+
+    if (this.itemData?.dataSourceRefIds && this.rootId)
+      this.referenceIdsEmitter(this.itemData, this.rootId);
   }
 
   onSelect(option: any) {
-    if (option.active) return;
 
-    this.itemData?.dataSource?.forEach((e: any) => e.active = false);
+    if (this.value === undefined) this.value = [];
 
-    this.value = option.id;
+    option.active = !option.active;
+
+    this.isSelectAll = this.itemData?.dataSource?.every((e: any) => e.active) ? true : false;
+
+    if (Array.isArray(this.value)) {
+      if (option.active)
+        this.value.push(option);
+      else {
+        const i = this.value.findIndex(e => e.id == option.id);
+        if (i > -1) {
+          this.value.splice(i, 1);
+
+          if (this.value.length == 0)
+            this.value = undefined;
+        }
+      }
+    }
 
     this.handler();
 
@@ -69,23 +90,37 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
 
   }
 
+  in(event: any, dd: HTMLElement, ddm: HTMLElement) {
+    if (!dd.classList.contains('show')) {
+      dd.classList.add('show');
+    }
+
+    if (!ddm.classList.contains('show')) {
+      ddm.classList.add('show');
+    }
+  }
+
+  out(event: any, dd: HTMLElement, ddm: HTMLElement) {
+
+    if (!this.first) {
+
+      if (dd.classList.contains('show')) {
+        dd.classList.remove('show');
+      }
+
+      if (ddm.classList.contains('show')) {
+        ddm.classList.remove('show');
+      }
+    }
+    if (!this.first) this.first = !this.first;
+  }
+
   get listOption() {
     if (!this.search) return this.itemData?.dataSource;
     return this.itemData?.dataSource?.filter((e: any) => this.formFieldService
       .toLowerCaseNonAccentVietnamese(e.name)
       .indexOf(this.formFieldService
         .toLowerCaseNonAccentVietnamese(this.search)) > -1);
-  }
-
-  get displayValue() {
-    const item = this.itemData?.dataSource?.find((e: any) => e.id == this.value);
-    if (item) {
-      this.itemData?.dataSource?.forEach((e: any) => e.active = false);
-      item.active = true;
-    } else {
-      this.itemData?.dataSource?.forEach((e: any) => e.active = false);
-    }
-    return item ? item.name : (this.itemData?.selectAll ? 'Tất cả' : '');
   }
 
 }

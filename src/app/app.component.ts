@@ -17,31 +17,59 @@ export class AppComponent implements OnDestroy {
       name: '',
       type: 'form',
       class: 'row',
-      items: [{
-        id: 'f1',
-        code: 'tinh',
-        index: 0,
-        name: 'Tỉnh',
-        type: 'multiple-select',
-        value: undefined,
-        dataSource: [
-          {
-            id: 't1',
-            name: 'Tỉnh 1'
-          },
-          {
-            id: 't2',
-            name: 'Tỉnh 2'
-          },
-          {
-            id: 't3',
-            name: 'Tỉnh 3'
-          }
-        ],
-        class: 'col-12 col-md-6',
-        selectAll: true,
-        search: true
-      }]
+      items: [
+        {
+          id: 'f1',
+          code: 'tinh',
+          index: 0,
+          name: 'Tỉnh',
+          type: 'multiple-select',
+          value: undefined,
+          dataSource: [
+            {
+              id: 't1',
+              name: 'Tỉnh 1'
+            },
+            {
+              id: 't2',
+              name: 'Tỉnh 2'
+            },
+            {
+              id: 't3',
+              name: 'Tỉnh 3'
+            }
+          ],
+          class: 'col-12 col-md-6',
+          selectAll: true,
+          search: true,
+          required: true
+        },
+        {
+          id: 'f2',
+          code: 'tinh2',
+          index: 0,
+          name: 'Tỉnh 2',
+          type: 'select',
+          value: undefined,
+          dataSource: [
+            {
+              id: 't1',
+              name: 'Tỉnh 1'
+            },
+            {
+              id: 't2',
+              name: 'Tỉnh 2'
+            },
+            {
+              id: 't3',
+              name: 'Tỉnh 3'
+            }
+          ],
+          class: 'col-12 col-md-6',
+          selectAll: true,
+          search: true
+        }
+      ]
     }
   ]
   result = {} as any;
