@@ -24,9 +24,7 @@ import { FormFieldModule } from './form-field/form-field.module';
     FormFieldModule
   ],
   providers: [
-    MatDatepickerModule,
-    MatNativeDateModule,
-    { provide: MAT_DATE_LOCALE, useValue: 'vi-VN' }
+   
   ],
   bootstrap: [AppComponent]
 })

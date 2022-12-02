@@ -20,7 +20,7 @@ import { FormFieldComponent } from './form-field.component';
 // pipes
 import { HighlighterPipe } from './pipes/highlighter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -57,6 +57,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ],
   exports: [
     FormFieldComponent
+  ],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    { provide: MAT_DATE_LOCALE, useValue: 'vi-VN' }
   ]
 })
 export class FormFieldModule { }

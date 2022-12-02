@@ -42,9 +42,4 @@ ng add @angular/material -> yes -> yes
 
 ## import FormFieldModule into app.module
 
-## import this code below into providers [] in app.module
-MatDatepickerModule,
-MatNativeDateModule,
-{ provide: MAT_DATE_LOCALE, useValue: 'vi-VN' }
-
 ## ============================== end Bao comment ==============================
