@@ -32,9 +32,10 @@ export class FormField {
     items?: FormField[] | undefined;
     // group
     alignName?: "center" | "left" | "right";
-    //file, select
+    //file
     multiple?: boolean;
-    
+    //multiple select
+    numberItemShow?: number;
 }
 
 export class Errors {
@@ -49,10 +50,3 @@ export class FormulaEmitterInput {
     value: string | number | Date | undefined;
     id: string | undefined;
 }
-
-// export class FormulaEmitterInput {
-//     formulaRefIds: string[] | undefined;
-//     value: string | number | Date | undefined;
-//     id: string | undefined;
-// }
-

@@ -30,6 +30,8 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
   search: string | undefined;
   isSelectAll: boolean = false;
 
+  FAKE = 'fake';
+
   constructor(formFieldService: FormFieldService) {
     super(formFieldService);
   }
@@ -90,6 +92,16 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
 
   }
 
+  onRemoveOption(index: number) {
+    if (this.isSelectAll) this.isSelectAll = false;
+    let o = this.itemData?.dataSource?.find(e => e.id == this.value[index].id);
+    if (o) o.active = false;
+    this.value.splice(index, 1);
+    if (this.value.length == 0) this.value = undefined;
+
+    this.handler();
+  }
+
   in(event: any, dd: HTMLElement, ddm: HTMLElement) {
     if (!dd.classList.contains('show')) {
       dd.classList.add('show');
@@ -121,6 +133,28 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
       .toLowerCaseNonAccentVietnamese(e.name)
       .indexOf(this.formFieldService
         .toLowerCaseNonAccentVietnamese(this.search)) > -1);
+  }
+
+  get listItemShow() {
+    let result: any[] = [];
+    if (Array.isArray(this.value)) {
+      if (this.itemData?.numberItemShow && this.itemData?.numberItemShow < this.value.length) {
+        const number = this.itemData?.numberItemShow;
+        let i = 0;
+        while (i < number) {
+          result.push(this.value[i++]);
+        }
+
+        result.push({
+          id: this.FAKE,
+          name: `+ ${(this.value.length - number)}`
+        });
+
+        return result;
+      }
+      return this.value;
+    }
+    return result;
   }
 
 }

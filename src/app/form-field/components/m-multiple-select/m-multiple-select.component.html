@@ -25,6 +25,13 @@
       id="{{ itemData?.id }}"
     />
 
+    <div class="items-selected">
+      <code class="item" *ngFor="let item of listItemShow; let index = index">
+        <span class="item-name">{{ item.name }}</span>
+        <i class="fa fa-close" *ngIf="item.id != FAKE" (click)="onRemoveOption(index)"></i>
+      </code>
+    </div>
+
     <div
       class="dropdown-menu w-100 hold-on-click"
       #ddm

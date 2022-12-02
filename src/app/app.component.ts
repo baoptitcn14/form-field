@@ -42,7 +42,8 @@ export class AppComponent implements OnDestroy {
           class: 'col-12 col-md-6',
           selectAll: true,
           search: true,
-          required: true
+          required: true,
+          numberItemShow: 0
         },
         {
           id: 'f2',
