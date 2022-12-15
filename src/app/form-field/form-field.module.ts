@@ -19,12 +19,14 @@ import { FormFieldComponent } from './form-field.component';
 
 // pipes
 import { HighlighterPipe } from './pipes/highlighter.pipe';
+import { MMultipleSelectComponent } from './components/m-multiple-select/m-multiple-select.component';
+import { ClickOutSideDirective } from './directives/click-out-side.directive';
+
+// modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MMultipleSelectComponent } from './components/m-multiple-select/m-multiple-select.component';
-import { ClickOutSideDirective } from './directives/click-out-side.directive';
 
 @NgModule({
   declarations: [

@@ -57,11 +57,12 @@
     align-items: center;
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 8px;
     right: 36px;
     max-height: 22px;
     margin-top: -11px;
     z-index: 2;
+    width: max-content;
 
     .item {
         border: 1px solid #e83e8c;
