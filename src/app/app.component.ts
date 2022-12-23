@@ -17,58 +17,58 @@ export class AppComponent implements OnDestroy {
       name: '',
       type: 'form',
       class: 'row',
+      valid: true,
       items: [
         {
-          id: 'f1',
-          code: 'tinh',
+          id: 'table1',
+          code: 'table1',
           index: 0,
-          name: 'Tỉnh',
-          type: 'multiple-select',
+          name: 'Table',
+          type: 'table',
           value: undefined,
+          class: 'col-12 col-md-12',
           dataSource: [
             {
-              id: 't1',
-              name: 'Tỉnh 1'
-            },
-            {
-              id: 't2',
-              name: 'Tỉnh 2'
-            },
-            {
-              id: 't3',
-              name: 'Tỉnh 3'
+              t_headers: [
+                {
+                  key: 'name',
+                  name: 'Name'
+                },
+                {
+                  key: 'age',
+                  name: 'Ages'
+                },
+                {
+                  key: 'cccd',
+                  name: 'CCCD'
+                },
+                {
+                  key: 'phoneNumber',
+                  name: 'Phone number'
+                },
+                {
+                  key: 'gender',
+                  name: 'Gender'
+                }
+              ],
+              t_records: [
+                {
+                  name: 'dinh the bao',
+                  age: 27,
+                  cccd: '99999999',
+                  phoneNumber: '0938515174',
+                  gender: 'nam'
+                },
+                {
+                  name: 'dinh thi thuy vui',
+                  age: 25,
+                  cccd: '88888888',
+                  phoneNumber: '0938515171',
+                  gender: 'nu'
+                }
+              ]
             }
-          ],
-          class: 'col-12 col-md-6',
-          selectAll: true,
-          search: true,
-          required: true,
-          numberItemShow: 0
-        },
-        {
-          id: 'f2',
-          code: 'tinh2',
-          index: 0,
-          name: 'Tỉnh 2',
-          type: 'select',
-          value: undefined,
-          dataSource: [
-            {
-              id: 't1',
-              name: 'Tỉnh 1'
-            },
-            {
-              id: 't2',
-              name: 'Tỉnh 2'
-            },
-            {
-              id: 't3',
-              name: 'Tỉnh 3'
-            }
-          ],
-          class: 'col-12 col-md-6',
-          selectAll: true,
-          search: true
+          ]
         }
       ]
     }

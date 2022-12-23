@@ -35,7 +35,9 @@ export class MSelectComponent extends MBaseInput implements Validator {
 
   validate(control: AbstractControl): ValidationErrors | null {
     this.errors = this.baseValidate(this.itemData, control.value);
-    this.proccessValidEmitter(this.rootId);
+    
+    if (this.rootId)
+      this.proccessValidEmitter(this.rootId);
     return this.errors ? this.errors : null;
   }
 
@@ -68,14 +70,18 @@ export class MSelectComponent extends MBaseInput implements Validator {
 
   get listOption() {
     if (!this.search) return this.itemData?.dataSource;
-    return this.itemData?.dataSource?.filter((e: any) => this.formFieldService
+
+    const dataSource = this.itemData?.dataSource;
+
+    return dataSource?.filter((e: any) => this.formFieldService
       .toLowerCaseNonAccentVietnamese(e.name)
       .indexOf(this.formFieldService
         .toLowerCaseNonAccentVietnamese(this.search)) > -1);
   }
 
   get displayValue() {
-    const item = this.itemData?.dataSource?.find((e: any) => e.id == this.value);
+    const dataSource = this.itemData?.dataSource;
+    const item = dataSource?.find((e: any) => e.id == this.value);
     if (item) {
       this.itemData?.dataSource?.forEach((e: any) => e.active = false);
       item.active = true;

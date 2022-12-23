@@ -27,6 +27,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MFilterComponent } from './components/m-filter/m-filter.component';
+import { MSearchComponent } from './components/m-search/m-search.component';
+import { MFiltersComponent } from './components/m-filters/m-filters.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HighlighterPipe,
 
     //directives
-    ClickOutSideDirective
+    ClickOutSideDirective,
+      MFilterComponent,
+      MSearchComponent,
+      MFiltersComponent
   ],
   imports: [
     CommonModule,

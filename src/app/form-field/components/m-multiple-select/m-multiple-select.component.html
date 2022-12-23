@@ -28,7 +28,11 @@
     <div class="items-selected">
       <code class="item" *ngFor="let item of listItemShow; let index = index">
         <span class="item-name">{{ item.name }}</span>
-        <i class="fa fa-close" *ngIf="item.id != FAKE" (click)="onRemoveOption(index)"></i>
+        <i
+          class="fa fa-close"
+          *ngIf="item.id != FAKE"
+          (click)="onRemoveOption(index)"
+        ></i>
       </code>
     </div>
 
@@ -57,14 +61,18 @@
       >
         Tất cả
       </a>
-      <a
-        *ngFor="let option of listOption; let index = index"
-        class="dropdown-item"
-        [ngClass]="{ active: option.active }"
-        (click)="onSelect(option)"
-      >
-        <span [innerHTML]="option.name | highlighter : search"></span>
-      </a>
+      <ng-container *ngFor="let option of listOption; let index = index">
+        <a
+          class="dropdown-item"
+          [ngClass]="{ active: option.active }"
+          (click)="onSelect(option)"
+        >
+          <span
+            *ngIf="option.name"
+            [innerHTML]="option.name | highlighter : search"
+          ></span>
+        </a>
+      </ng-container>
     </div>
   </div>
 

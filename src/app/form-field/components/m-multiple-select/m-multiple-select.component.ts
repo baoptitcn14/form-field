@@ -45,10 +45,12 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
   onSelectAll() {
     if (this.value === undefined) this.value = [];
 
+    const dataSource = this.itemData?.dataSource;
+
     this.isSelectAll = !this.isSelectAll;
-    this.itemData?.dataSource?.forEach((e: any) => e.active = this.isSelectAll);
+    dataSource?.forEach((e: any) => e.active = this.isSelectAll);
     this.value = this.isSelectAll
-      ? this.itemData?.dataSource?.filter(e => e.active)
+      ? dataSource?.filter(e => e.active)
       : undefined;
 
     this.handler();
@@ -66,7 +68,9 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
 
     option.active = !option.active;
 
-    this.isSelectAll = this.itemData?.dataSource?.every((e: any) => e.active) ? true : false;
+    const dataSource = this.itemData?.dataSource;
+
+    this.isSelectAll = dataSource?.every((e: any) => e.active) ? true : false;
 
     if (Array.isArray(this.value)) {
       if (option.active)
@@ -94,7 +98,9 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
 
   onRemoveOption(index: number) {
     if (this.isSelectAll) this.isSelectAll = false;
-    let o = this.itemData?.dataSource?.find(e => e.id == this.value[index].id);
+
+    const dataSource = this.itemData?.dataSource;
+    let o = dataSource?.find(e => e.id == this.value[index].id);
     if (o) o.active = false;
     this.value.splice(index, 1);
     if (this.value.length == 0) this.value = undefined;
@@ -129,7 +135,9 @@ export class MMultipleSelectComponent extends MBaseInput implements Validator {
 
   get listOption() {
     if (!this.search) return this.itemData?.dataSource;
-    return this.itemData?.dataSource?.filter((e: any) => this.formFieldService
+    const dataSource = this.itemData?.dataSource;
+
+    return dataSource?.filter((e: any) => this.formFieldService
       .toLowerCaseNonAccentVietnamese(e.name)
       .indexOf(this.formFieldService
         .toLowerCaseNonAccentVietnamese(this.search)) > -1);

@@ -45,13 +45,15 @@
       >
         Tất cả
       </a>
-      <a
-        *ngFor="let option of listOption"
-        class="dropdown-item"
-        [ngClass]="{ active: option.active}"
-        (click)="onSelect(option)"
-        [innerHTML]="option.name | highlighter: search"
-      ></a>
+      <ng-container *ngFor="let option of listOption">
+        <a
+          class="dropdown-item"
+          [ngClass]="{ active: option.active }"
+          (click)="onSelect(option)"
+          *ngIf="option.name"
+          [innerHTML]="option.name | highlighter : search"
+        ></a>
+      </ng-container>
     </div>
   </div>
 

@@ -27,7 +27,7 @@ export class FormField {
     dataSourceRefIds?: { id: string, key: string }[];
     // select | table
     search?: boolean;
-    dataSource?: any[] | undefined;
+    dataSource?: DataSource[] | undefined;
     _dataSource?: any[] | undefined;
     items?: FormField[] | undefined;
     // group
@@ -38,15 +38,28 @@ export class FormField {
     numberItemShow?: number;
 }
 
-export class Errors {
+export interface Errors {
     required?: string | undefined;
     regex?: string | undefined;
     min?: string | undefined;
     max?: string | undefined;
 }
 
-export class FormulaEmitterInput {
+export interface FormulaEmitterInput {
     formulaRefIds: string[] | undefined;
     value: string | number | Date | undefined;
     id: string | undefined;
+}
+
+export interface HeaderTable {
+    key: string;
+    name: string | undefined;
+}
+
+export interface DataSource {
+    id?: string;
+    name?: string;
+    active?: boolean;
+    t_headers?: HeaderTable[];
+    t_records?: any[];
 }

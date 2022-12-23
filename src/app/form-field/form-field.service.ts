@@ -55,11 +55,14 @@ export class FormFieldService {
       }
       return null;
     }
+
+    return null;
   }
 
   getDisplayNameByValue(item: FormField, value: string | number | Date | undefined) {
     if (value && item.type == 'select') {
-      return item.dataSource?.find(e => e.id == value).name;
+      const dataSource = item?.dataSource;
+      return dataSource?.find(e => e.id == value)?.name;
     }
     return value;
   }
@@ -151,7 +154,7 @@ export class FormFieldService {
 
   toLowerCaseNonAccentVietnamese(str: string | undefined) {
     if (!str) return '';
-    
+
     str = str.toLowerCase();
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
