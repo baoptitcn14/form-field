@@ -95,6 +95,13 @@ export class MButtonComponent implements OnInit {
       iconPosition: 'left',
       text: 'Làm mới',
       class: 'btn-outline-secondary'
+    },
+    {
+      code: 'filter',
+      icon: 'filter',
+      iconPosition: 'left',
+      text: 'Lọc',
+      class: 'btn-secondary'
     }
   ];
 
@@ -113,7 +120,7 @@ export class MButtonComponent implements OnInit {
 }
 
 export interface MButton {
-  code?: 'default' | 'save' | 'edit' | 'add' | 'delete' | 'close' | 'confirm-delete' | 'back' | 'approve' | 'denie' | 'accept' | 'undo' | 'refresh';
+  code?: 'filter' | 'default' | 'save' | 'edit' | 'add' | 'delete' | 'close' | 'confirm-delete' | 'back' | 'approve' | 'denie' | 'accept' | 'undo' | 'refresh';
   icon?: string;
   iconPosition?: 'left' | 'right' | 'auto';
   text?: string;

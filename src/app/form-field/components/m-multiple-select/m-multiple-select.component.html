@@ -44,14 +44,7 @@
       (inSide)="in($event, dd, ddm)"
     >
       <a class="dropdown-item" *ngIf="itemData?.search">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-search"></i>
-            </span>
-          </div>
-          <input type="text" class="form-control" [(ngModel)]="search" />
-        </div>
+        <m-search [(ngModel)]="search"></m-search>
       </a>
       <a
         class="dropdown-item"

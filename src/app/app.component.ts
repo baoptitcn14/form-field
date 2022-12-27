@@ -27,6 +27,45 @@ export class AppComponent implements OnDestroy {
           type: 'table',
           value: undefined,
           class: 'col-12 col-md-12',
+          t_filters: {
+            multi: true,
+            list: [
+              {
+                key: 'age',
+                name: 'Age',
+                value: null,
+                class: 'ml-3',
+                selectAll: true,
+                dataSource: [
+                  {
+                    id: '27',
+                    name: '27'
+                  },
+                  {
+                    id: '25',
+                    name: '25'
+                  }
+                ]
+              },
+              {
+                key: 'gender',
+                name: 'Gender',
+                value: null,
+                selectAll: true,
+                class: 'ml-3',
+                dataSource: [
+                  {
+                    id: 'male',
+                    name: 'Male'
+                  },
+                  {
+                    id: 'female',
+                    name: 'Female'
+                  }
+                ]
+              }
+            ]
+          },
           dataSource: [
             {
               t_headers: [
@@ -50,7 +89,7 @@ export class AppComponent implements OnDestroy {
                   key: 'gender',
                   name: 'Gender'
                 }
-              ],
+              ],            
               t_records: [
                 {
                   name: 'dinh the bao',
@@ -81,8 +120,8 @@ export class AppComponent implements OnDestroy {
     this.formFieldService.destroy();
   }
 
-  onAction(obj: FormField) {
-    this.result = this.formFieldService.getResult(obj, {} as any);
-    console.log(this.result);
-  }
+  // onAction(obj: FormField) {
+  //   this.result = this.formFieldService.getResult(obj, {} as any);
+  //   console.log(this.result);
+  // }
 }

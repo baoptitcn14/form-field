@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormField, HeaderTable } from 'src/app/form-field/form-field';
-import { MFilter } from '../m-filter/m-filter.component';
 import { MFilters } from '../m-filters/m-filters.component';
 
 @Component({
@@ -12,66 +11,59 @@ export class MTableComponent implements OnInit {
   @Input() itemData: FormField | undefined;
 
   listHeader: HeaderTable[] | undefined = [];
-  listRecord: any[] | undefined = [];
   search = '';
+  flagMultiSearch: boolean | undefined;
+  tableSource: any = {
+    t_records: [],
+    t_headers: []
+  };
 
-  filterId: string = '1';
-
-  filters: MFilters = {
-    multi: true,
-    list: [
-      {
-        name: 'filter 1',
-        dataSource: [
-          {
-            id: '1',
-            name: 'item 1'
-          },
-          {
-            id: '2',
-            name: 'item 2'
-          },
-          {
-            id: '3',
-            name: 'item 3'
-          }
-        ]
-      },
-      {
-        name: 'filter 2',
-        dataSource: [
-          {
-            id: '1',
-            name: 'item 1'
-          },
-          {
-            id: '2',
-            name: 'item 2'
-          },
-          {
-            id: '3',
-            name: 'item 3'
-          }
-        ]
-      }
-    ]
-  }
-
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     if (this.itemData?.dataSource && this.itemData?.dataSource?.length > 0) {
 
-      const tableSource = this.itemData?.dataSource[0];
+      this.tableSource = this.itemData?.dataSource[0];
 
-      this.listHeader = tableSource.t_headers;
-      this.listRecord = tableSource.t_records;
+      this.listHeader = this.tableSource.t_headers;
     }
+
+    this.flagMultiSearch = this.itemData?.t_filters?.multi;
+  }
+
+  get listRecord() {
+
+    if (this.itemData?.t_filters?.list && this.itemData?.t_filters?.list.length > 0) {
+      this.flagMultiSearch = this.itemData.t_filters.multi;
+      const p = this.itemData.t_filters.list.filter(e => e.value).map(e => {
+        return {
+          key: e.key,
+          value: e.value
+        }
+      });
+
+      if (p.length == 0) return this.tableSource.t_records;
+
+      return this.tableSource.t_records.filter((z: any) => {
+        let count = 0;
+        p.forEach(x => {
+          count += (x.key && x.value) && (z[x.key] + '' == x.value) ? 1 : 0;
+        });
+
+        if (count == p.filter(e => e.value).length) return z;
+      });
+
+    }
+
+    return this.tableSource.t_records;
+  }
+
+  onFilter() {
+    if (this.flagMultiSearch) this.flagMultiSearch = false;
   }
 
   openModal() {
-    console.log('haha')
+    console.log('haha');
   }
 
 }

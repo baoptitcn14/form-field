@@ -13,7 +13,7 @@
       type="number"
       min="{{ itemData?.min }}"
       max="{{ itemData?.max }}"
-      class="form-control"
+      class="form-control text-right"
       [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
       [disabled]="isDisabled"
       [readOnly]="itemData?.readonly"

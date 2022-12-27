@@ -1,9 +1,7 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <ng-container *ngFor="let ob of listObjectForm">
-        <m-form-field [rootData]="ob" [rootId]="ob.id"></m-form-field>
-      </ng-container>
-    </div>
-  </div>
+<div class="container-fluid pt-4 pb-4">
+    <ng-container *ngFor="let ob of listObjectForm">
+      <m-form-field [rootData]="ob" [rootId]="ob.id"></m-form-field>
+    </ng-container>
+    <!-- {{ listObjectForm | json }} -->
 </div>
+

@@ -70,10 +70,12 @@ export class MBaseInput implements ControlValueAccessor {
         if (itemData?.type == 'text' && itemData?.regex) {
             let regex = new RegExp(itemData.regex);
             const test = regex.test(value);
+
             if (!test) {
+                const messageError = itemData.regexMessageError ? itemData.regexMessageError : 'Dữ liệu không hợp lệ!';
                 if (!errors) errors = { regex: undefined };
-                errors.regex = 'Dữ liệu không hợp lệ!';
-                this.addError('regex', 'Dữ liệu không hợp lệ!');
+                errors.regex = messageError;
+                this.addError('regex', messageError);
             } else {
                 delete errors?.regex;
                 this.deleteErrorByKey('regex');

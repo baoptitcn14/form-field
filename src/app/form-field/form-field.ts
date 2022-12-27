@@ -1,3 +1,5 @@
+import { MFilters } from "./components/m-filters/m-filters.component";
+
 export class FormField {
     id: string | undefined;
     index: number | undefined;
@@ -17,6 +19,7 @@ export class FormField {
     inputName?: string;
     // text | number
     regex?: RegExp;
+    regexMessageError?: string;
     // text | number
     formular?: string;
     // number
@@ -30,6 +33,7 @@ export class FormField {
     dataSource?: DataSource[] | undefined;
     _dataSource?: any[] | undefined;
     items?: FormField[] | undefined;
+    t_filters?: MFilters | undefined;
     // group
     alignName?: "center" | "left" | "right";
     //file
@@ -61,5 +65,5 @@ export interface DataSource {
     name?: string;
     active?: boolean;
     t_headers?: HeaderTable[];
-    t_records?: any[];
+    t_records?: any[];    
 }

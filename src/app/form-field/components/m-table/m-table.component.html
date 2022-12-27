@@ -1,29 +1,14 @@
 <div class="table-component">
   <div class="toolbar">
     <div class="toolbar-left">
-      <div class="search">
-        <div class="input-group input-group-sm">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-search"></i>
-            </span>
-          </div>
-          <input type="text" class="form-control" [(ngModel)]="search" />
-        </div>
-      </div>
-      <div class="filters">
-        <div class="filter">
-          <m-filters [filters]="filters" [(ngModel)]="filterId"></m-filters>
-        </div>
-      </div>
+      <m-search [(ngModel)]="search"></m-search>
+      <m-filters [filters]="itemData?.t_filters" (onFilterEvent)="onFilter()"></m-filters>
     </div>
     <div class="actions">
       <m-button [code]="'add'" (onClickEvent)="openModal()"></m-button>
     </div>
   </div>
   <div class="table-responsive">
-
-    {{ filterId }}
     <table class="table table-bordered table-striped table-hover table-sm">
       <thead>
         <tr class="table-secondary">
@@ -35,7 +20,9 @@
       <tbody>
         <tr *ngFor="let record of listRecord">
           <td *ngFor="let header of listHeader">
-            {{ record[header.key] }}
+            <span
+              [innerHTML]="record[header.key] | highlighter : search"
+            ></span>
           </td>
         </tr>
       </tbody>

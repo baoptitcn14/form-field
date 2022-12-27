@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar p-0 {{ filter.class }}">
   <div class="btn-group">
     <button type="button" class="btn btn-sm btn-outline-secondary">
       {{ filter.name }} <span class="text-danger">( {{ displayName }} )</span>
@@ -12,6 +12,14 @@
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
+      <a
+        class="dropdown-item"
+        [ngClass]="{ active: !value }"
+        *ngIf="filter?.selectAll"
+        (click)="onSelectAll()"
+      >
+        Tất cả
+      </a>
       <ng-container *ngFor="let item of filter.dataSource">
         <a
           class="dropdown-item"

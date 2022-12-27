@@ -19,9 +19,12 @@ export class HighlighterPipe implements PipeTransform {
     const re = new RegExp(this.formFieldService.toLowerCaseNonAccentVietnamese(arg), 'igm');
 
     const i = cloneValue.indexOf(re.source);
-    const v = value.substring(i, (re.source.length + i));
 
-    value = value.replace(v, `<span class="highlighted-text">${v}<span>`);
+    if(i > -1) {
+      const v = (value + '').substring(i, (re.source.length + i));
+      value = (value + '').replace(v, `<span class="highlighted-text">${v}<span>`);
+    }
+
     return this.dom.bypassSecurityTrustHtml(value);
   }
 
