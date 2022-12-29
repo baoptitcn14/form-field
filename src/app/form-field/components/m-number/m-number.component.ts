@@ -24,6 +24,7 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 
 export class MNumberComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
+  @Input() inputSize: string | undefined;
   @Input() rootId: string | undefined;
   errors: Errors | undefined;
 

@@ -2,7 +2,10 @@
   <div class="toolbar">
     <div class="toolbar-left">
       <m-search [(ngModel)]="search"></m-search>
-      <m-filters [filters]="itemData?.t_filters" (onFilterEvent)="onFilter()"></m-filters>
+      <m-filters
+        [filters]="itemData?.t_filters"
+        (onFilterEvent)="onFilter()"
+      ></m-filters>
     </div>
     <div class="actions">
       <m-button [code]="'add'" (onClickEvent)="openModal()"></m-button>
@@ -15,14 +18,47 @@
           <th scope="col" *ngFor="let header of listHeader">
             {{ header.name }}
           </th>
+          <th
+            *ngIf="itemData?.t_actions"
+            width="{{ itemData?.t_actions?.width }}"
+          ></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let record of listRecord">
-          <td *ngFor="let header of listHeader">
+          <td class="align-middle" *ngFor="let header of listHeader">
             <span
-              [innerHTML]="record[header.key] | highlighter : search"
+              class="{{ header.class }}"
+              *ngIf="!header.type || header.type == TYPE_COLUMN.TEXT"
+              [innerHTML]="record.value[header.key] | highlighter : search"
             ></span>
+            <span>
+              <m-text
+                [(ngModel)]="record.value[header.key]"
+                [inputSize]="'sm'"
+                *ngIf="header.type == TYPE_COLUMN.I_TEXT"
+              ></m-text>
+            </span>
+            <span class="actions">
+              <ng-container
+                *ngIf="record.actions && record.actions[header.key]"
+              >
+                <m-button
+                  class="ml-2"
+                  *ngFor="let ac of record.actions[header.key]"
+                  [button]="ac"
+                  (onClickEvent)="onClickAction(ac, record)"
+                ></m-button>
+              </ng-container>
+            </span>
+          </td>
+          <td class="align-middle" *ngIf="itemData?.t_actions">
+            <ng-container *ngFor="let ac of itemData?.t_actions?.list">
+              <m-button
+                [button]="ac"
+                (onClickEvent)="onClickAction(ac, record)"
+              ></m-button>
+            </ng-container>
           </td>
         </tr>
       </tbody>

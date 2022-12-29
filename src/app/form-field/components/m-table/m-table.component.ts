@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormField, HeaderTable } from 'src/app/form-field/form-field';
-import { MFilters } from '../m-filters/m-filters.component';
+import { MButton } from '../m-button/m-button.component';
 
 @Component({
   selector: 'm-table',
@@ -17,6 +17,12 @@ export class MTableComponent implements OnInit {
     t_records: [],
     t_headers: []
   };
+
+  readonly TYPE_COLUMN = {
+    TEXT: 'text',
+    I_TEXT: 'i_text',
+    I_NUMBER: 'i_number'
+  }
 
   constructor() { }
 
@@ -64,6 +70,11 @@ export class MTableComponent implements OnInit {
 
   openModal() {
     console.log('haha');
+  }
+
+  onClickAction(action: MButton, data: any) {
+    if (action && action.click)
+      action.click(data);
   }
 
 }

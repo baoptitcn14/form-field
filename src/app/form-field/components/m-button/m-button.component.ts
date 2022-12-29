@@ -30,7 +30,7 @@ export class MButtonComponent implements OnInit {
       code: 'edit',
       icon: 'pencil',
       iconPosition: 'left',
-      text: 'Chỉnh sửa',
+      text: 'Sửa',
       class: 'btn-outline-info'
     },
     {
@@ -108,8 +108,19 @@ export class MButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.code) {
-      this.button = this.buttonsDefault.find(e => e.code == this.code);
+    if (this.code
+      || (this.button && this.button.default && this.button.code)) {
+      const code = this.code ? this.code : this.button?.code;
+      const _class = this.button?.class ? this.button?.class : '';
+      const disabled = this.button?.disabled ? this.button?.disabled : false;
+      this.button = this.buttonsDefault.find(e => e.code == code);
+
+      if (this.button) {
+        if (_class)
+          this.button.class += ' ' + _class;
+        if (disabled)
+          this.button.disabled = disabled;
+      }
     }
   }
 
@@ -126,4 +137,6 @@ export interface MButton {
   text?: string;
   class?: string;
   disabled?: boolean;
+  default?: boolean;
+  click?: (data: any) => void;
 }

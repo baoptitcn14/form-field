@@ -23,6 +23,7 @@ import { MBaseInput } from '../m-base-input/m-base-input';
 })
 export class MTextComponent extends MBaseInput implements Validator {
   @Input() itemData: FormField | undefined;
+  @Input() inputSize: string | undefined;
   @Input() rootId: string | undefined;
 
   errors: Errors | undefined;
@@ -32,9 +33,12 @@ export class MTextComponent extends MBaseInput implements Validator {
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    this.errors = this.baseValidate(this.itemData, control.value);
-    this.proccessValidEmitter(this.rootId);
-    return this.errors ? this.errors : null;
+    if(this.itemData) {
+      this.errors = this.baseValidate(this.itemData, control.value);
+      this.proccessValidEmitter(this.rootId);
+      return this.errors ? this.errors : null;
+    }
+    return null;
   }
 
   onChangeValue(): void {

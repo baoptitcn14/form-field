@@ -53,10 +53,12 @@ export class MBaseInput implements ControlValueAccessor {
     }
 
     protected baseValidate(itemData: FormField | undefined, controlValue: any) {
+        if(!itemData) return undefined;
+
         let errors: Errors | undefined;
         const value = controlValue;
 
-        if (itemData?.required) {
+        if (itemData.required) {
             if (value !== null && value !== undefined && value !== "") {
                 delete errors?.required;
                 this.deleteErrorByKey('required');
@@ -67,7 +69,7 @@ export class MBaseInput implements ControlValueAccessor {
             }
         }
 
-        if (itemData?.type == 'text' && itemData?.regex) {
+        if (itemData.type == 'text' && itemData.regex) {
             let regex = new RegExp(itemData.regex);
             const test = regex.test(value);
 
@@ -82,7 +84,7 @@ export class MBaseInput implements ControlValueAccessor {
             }
         }
 
-        itemData!.valid = errors ? false : true;
+        itemData.valid = errors ? false : true;
         return errors ? errors : undefined;
     }
 

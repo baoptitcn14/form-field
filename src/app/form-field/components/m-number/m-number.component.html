@@ -1,25 +1,25 @@
-<ng-container *ngIf="itemData?.icon">
-  <label for="{{ itemData?.id }}" class="form-label">{{
-    itemData?.name
+<ng-container *ngIf="itemData && itemData.icon">
+  <label for="{{ itemData.id }}" class="form-label">{{
+    itemData.name
   }}</label>
 
   <div class="input-group has-validation">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <i class="{{ itemData?.icon }}"></i>
+        <i class="{{ itemData.icon }}"></i>
       </span>
     </div>
     <input
       type="number"
-      min="{{ itemData?.min }}"
-      max="{{ itemData?.max }}"
-      class="form-control text-right"
+      min="{{ itemData.min }}"
+      max="{{ itemData.max }}"
+      class="form-control form-control-{{inputSize}} text-right"
       [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
       [disabled]="isDisabled"
-      [readOnly]="itemData?.readonly"
+      [readOnly]="itemData.readonly"
       [(ngModel)]="value"
       (ngModelChange)="onChangeValue()"
-      id="{{ itemData?.id }}"
+      id="{{ itemData.id }}"
     />
 
     <!-- hien thi loi -->
@@ -29,21 +29,21 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="!itemData?.icon">
-  <label for="{{ itemData?.id }}" class="form-label">{{
-    itemData?.name
+<ng-container *ngIf="itemData && !itemData.icon">
+  <label for="{{ itemData.id }}" class="form-label">{{
+    itemData.name
   }}</label>
 
   <input
     type="number"
-    min="{{ itemData?.min }}"
-    max="{{ itemData?.max }}"
-    class="form-control"
+    min="{{ itemData.min }}"
+    max="{{ itemData.max }}"
+    class="form-control form-control-{{inputSize}}"
     [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
     [disabled]="isDisabled"
     [(ngModel)]="value"
     (ngModelChange)="onChangeValue()"
-    id="{{ itemData?.id }}"
+    id="{{ itemData.id }}"
   />
 
   <!-- hien thi loi -->
@@ -51,4 +51,14 @@
     {{ error.message }}
   </small>
   <small hidden></small>
+</ng-container>
+
+<ng-container *ngIf="!itemData">
+  <input
+    type="number"
+    class="form-control form-control-{{inputSize}}"
+    [disabled]="isDisabled"
+    [(ngModel)]="value"
+    (ngModelChange)="onChangeValue()"
+  />
 </ng-container>

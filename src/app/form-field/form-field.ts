@@ -1,3 +1,4 @@
+import { MButton } from "./components/m-button/m-button.component";
 import { MFilters } from "./components/m-filters/m-filters.component";
 
 export class FormField {
@@ -17,6 +18,7 @@ export class FormField {
     compairWithRefIds?: string[];
     inline?: boolean;
     inputName?: string;
+    inputSize?: 'sm' | 'md' | 'lg';
     // text | number
     regex?: RegExp;
     regexMessageError?: string;
@@ -34,6 +36,7 @@ export class FormField {
     _dataSource?: any[] | undefined;
     items?: FormField[] | undefined;
     t_filters?: MFilters | undefined;
+    t_actions?: {css?: any, class?: string, width?: number, list: MButton[]};
     // group
     alignName?: "center" | "left" | "right";
     //file
@@ -58,12 +61,21 @@ export interface FormulaEmitterInput {
 export interface HeaderTable {
     key: string;
     name: string | undefined;
+    sort?: boolean;
+    class?: string;
+    type: 'text' | 'i_text' | 'i_number' | undefined;
 }
+
+export interface TRecords {
+    actions?: { [key: string]: MButton[] };
+    value: any;
+}
+
 
 export interface DataSource {
     id?: string;
     name?: string;
     active?: boolean;
     t_headers?: HeaderTable[];
-    t_records?: any[];    
+    t_records?: TRecords[];
 }

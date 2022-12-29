@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormFieldService } from './form-field/form-field.service';
 import { FormField } from './form-field/form-field';
+import { MButton } from './form-field/components/m-button/m-button.component';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,22 @@ export class AppComponent implements OnDestroy {
           type: 'table',
           value: undefined,
           class: 'col-12 col-md-12',
+          t_actions: {
+            width: 101,
+            list: [
+              {
+                code: 'edit',
+                default: true,
+                click: (data: any) => this.openModalEdit(data)
+              },
+              {
+                code: 'delete',
+                default: true,
+                class: 'ml-2',
+                click: (data: any) => this.openModalEdit(data)
+              }
+            ]
+          },
           t_filters: {
             multi: true,
             list: [
@@ -71,39 +88,58 @@ export class AppComponent implements OnDestroy {
               t_headers: [
                 {
                   key: 'name',
-                  name: 'Name'
+                  name: 'Name',
+                  type: 'text',
+                  class: 'text-center'
                 },
                 {
                   key: 'age',
-                  name: 'Ages'
+                  name: 'Ages',
+                  type: 'i_text'
                 },
                 {
                   key: 'cccd',
-                  name: 'CCCD'
+                  name: 'CCCD',
+                  type: 'text'
                 },
                 {
                   key: 'phoneNumber',
-                  name: 'Phone number'
+                  name: 'Phone number',
+                  type: 'text'
                 },
                 {
                   key: 'gender',
-                  name: 'Gender'
+                  name: 'Gender',
+                  type: 'text'
                 }
-              ],            
+              ],
               t_records: [
                 {
-                  name: 'dinh the bao',
-                  age: 27,
-                  cccd: '99999999',
-                  phoneNumber: '0938515174',
-                  gender: 'nam'
+                  actions: {
+                    name: [
+                      {
+                        code: 'approve',
+                        default: true,
+                        click: (data: any) => this.openModalEdit(data)
+                      }
+                    ]
+                  },
+                  value: {
+                    name: 'dinh the bao',
+                    age: 27,
+                    cccd: '99999999',
+                    phoneNumber: '0938515174',
+                    gender: 'female'
+                  },
                 },
                 {
-                  name: 'dinh thi thuy vui',
-                  age: 25,
-                  cccd: '88888888',
-                  phoneNumber: '0938515171',
-                  gender: 'nu'
+                  value: {
+                    name: 'dinh thi thuy vui',
+                    age: 25,
+                    cccd: '88888888',
+                    phoneNumber: '0938515171',
+                    gender: 'male'
+                  },
                 }
               ]
             }
@@ -118,6 +154,10 @@ export class AppComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.formFieldService.destroy();
+  }
+
+  openModalEdit(data: any) {
+    console.log(data);
   }
 
   // onAction(obj: FormField) {
