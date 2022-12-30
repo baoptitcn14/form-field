@@ -38,7 +38,6 @@ export class MTableComponent implements OnInit {
   }
 
   get listRecord() {
-
     if (this.itemData?.t_filters?.list && this.itemData?.t_filters?.list.length > 0) {
       this.flagMultiSearch = this.itemData.t_filters.multi;
       const p = this.itemData.t_filters.list.filter(e => e.value).map(e => {
@@ -53,7 +52,7 @@ export class MTableComponent implements OnInit {
       return this.tableSource.t_records.filter((z: any) => {
         let count = 0;
         p.forEach(x => {
-          count += (x.key && x.value) && (z[x.key] + '' == x.value) ? 1 : 0;
+          count += (x.key && x.value) && (z.value[x.key] + '' == x.value) ? 1 : 0;
         });
 
         if (count == p.filter(e => e.value).length) return z;
