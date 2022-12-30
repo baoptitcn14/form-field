@@ -38,7 +38,7 @@
     type="number"
     min="{{ itemData.min }}"
     max="{{ itemData.max }}"
-    class="form-control form-control-{{inputSize}}"
+    class="form-control form-control-{{inputSize}} text-right"
     [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors }"
     [disabled]="isDisabled"
     [(ngModel)]="value"
@@ -56,7 +56,7 @@
 <ng-container *ngIf="!itemData">
   <input
     type="number"
-    class="form-control form-control-{{inputSize}}"
+    class="form-control form-control-{{inputSize}} text-right"
     [disabled]="isDisabled"
     [(ngModel)]="value"
     (ngModelChange)="onChangeValue()"

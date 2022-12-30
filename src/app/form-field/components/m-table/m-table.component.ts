@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormField, HeaderTable } from 'src/app/form-field/form-field';
 import { MButton } from '../m-button/m-button.component';
 

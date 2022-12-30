@@ -33,6 +33,8 @@ export class MNumberComponent extends MBaseInput implements Validator {
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
+    if(!this.itemData) return null;
+
     this.errors = this.baseValidate(this.itemData, control.value);
 
     if (this.itemData?.min != undefined) {

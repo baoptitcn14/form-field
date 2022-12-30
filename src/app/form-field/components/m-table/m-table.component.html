@@ -38,6 +38,13 @@
                 [inputSize]="'sm'"
                 *ngIf="header.type == TYPE_COLUMN.I_TEXT"
               ></m-text>
+
+              <m-number
+                [(ngModel)]="record.value[header.key]"
+                [inputSize]="'sm'"
+                *ngIf="header.type == TYPE_COLUMN.I_NUMBER"
+              ></m-number>
+              
             </span>
             <span class="actions">
               <ng-container

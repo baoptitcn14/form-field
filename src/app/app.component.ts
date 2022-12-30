@@ -95,7 +95,7 @@ export class AppComponent implements OnDestroy {
                 {
                   key: 'age',
                   name: 'Ages',
-                  type: 'i_text'
+                  type: 'i_number'
                 },
                 {
                   key: 'cccd',
