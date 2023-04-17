@@ -8,7 +8,7 @@
       </span>
     </div>
     <input
-      type="text"
+      type="{{ itemData.hiddenText ? 'password' : 'text' }}"
       class="form-control form-control-{{inputSize}}"
       [ngClass]="{ 'is-invalid': errors, 'is-valid': !errors}"
       [disabled]="isDisabled"

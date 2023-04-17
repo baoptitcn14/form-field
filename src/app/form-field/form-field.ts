@@ -13,6 +13,7 @@ export class FormField {
     readonly?: boolean = false;
     required?: boolean = false;
     valid?: boolean = true;
+    hiddenText?: boolean = false;
     icon?: string;
     formulaRefIds?: string[];
     compairWithRefIds?: string[];
