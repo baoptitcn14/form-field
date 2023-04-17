@@ -1,10 +1,9 @@
 <div class="table-component">
   <div class="toolbar">
     <div class="toolbar-left">
-      <m-search [(ngModel)]="search"></m-search>
+      <m-search [(ngModel)]="search" (ngModelChange)="onSearch()"></m-search>
       <m-filters
         [filters]="itemData?.t_filters"
-        (onFilterEvent)="onFilter()"
       ></m-filters>
     </div>
     <div class="actions">

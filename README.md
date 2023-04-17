@@ -40,6 +40,34 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ng add @angular/material -> yes -> yes
 
-## import FormFieldModule into app.module
+## import module
+import FormFieldModule into app.module
+
+## import css, js into angular.json file
+
+"styles": [
+    "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+    "node_modules/font-awesome/css/font-awesome.min.css",
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    ...
+    "src/styles.scss"
+],
+"scripts": [
+    "./node_modules/jquery/dist/jquery.min.js",
+    "./node_modules/@popperjs/core/dist/umd/popper.min.js",
+    "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+    ...
+    "./src/assets/app.js"
+]
+
+## copy style into style.scss
+
+.highlighted-text {
+    background-color: violet;
+
+    span:not(:has(.highlighted-text)) {
+        background-color: #ffffff;
+    }
+}
 
 ## ============================== end Bao comment ==============================

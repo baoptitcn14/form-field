@@ -45,7 +45,7 @@ export class AppComponent implements OnDestroy {
             ]
           },
           t_filters: {
-            multi: true,
+            multi: false,
             list: [
               {
                 key: 'age',
