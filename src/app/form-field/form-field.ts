@@ -37,7 +37,7 @@ export class FormField {
     _dataSource?: any[] | undefined;
     items?: FormField[] | undefined;
     t_filters?: MFilters | undefined;
-    t_actions?: {css?: any, class?: string, width?: number, list: MButton[]};
+    t_actions?: {css?: any, class?: string, width?: number, list: MButton[], createButton?: MButton};
     // group
     alignName?: "center" | "left" | "right";
     //file

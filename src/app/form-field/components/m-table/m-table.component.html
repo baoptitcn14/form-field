@@ -2,12 +2,14 @@
   <div class="toolbar">
     <div class="toolbar-left">
       <m-search [(ngModel)]="search" (ngModelChange)="onSearch()"></m-search>
-      <m-filters
-        [filters]="itemData?.t_filters"
-      ></m-filters>
+      <m-filters [filters]="itemData?.t_filters"></m-filters>
     </div>
     <div class="actions">
-      <m-button [code]="'add'" (onClickEvent)="openModal()"></m-button>
+      <m-button
+        *ngIf="itemData && itemData.t_actions && itemData.t_actions.createButton"
+        [button]="itemData.t_actions.createButton"
+        (onClickEvent)="onClickAction(itemData.t_actions.createButton, null)"
+      ></m-button>
     </div>
   </div>
   <div class="table-responsive">
@@ -43,7 +45,6 @@
                 [inputSize]="'sm'"
                 *ngIf="header.type == TYPE_COLUMN.I_NUMBER"
               ></m-number>
-              
             </span>
             <span class="actions">
               <ng-container

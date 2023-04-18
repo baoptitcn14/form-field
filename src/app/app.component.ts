@@ -29,6 +29,11 @@ export class AppComponent implements OnDestroy {
           value: undefined,
           class: 'col-12 col-md-12',
           t_actions: {
+            createButton: {
+              code: 'add',
+              default: true,
+              click: () => this.openModalCreate()              
+            },
             width: 101,
             list: [
               {
@@ -158,6 +163,10 @@ export class AppComponent implements OnDestroy {
 
   openModalEdit(data: any) {
     console.log(data);
+  }
+
+  openModalCreate() {
+    console.log('open modal create');
   }
 
   // onAction(obj: FormField) {

@@ -7,7 +7,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class MButtonComponent implements OnInit {
 
-  @Input('code') code: string = '';
+  @Input('code') code: string | undefined = '';
+  @Input('cssClass') cssClass: string | undefined = '';
+  @Input('disabled') disabled: boolean | undefined;
+  @Input('text') text: string | undefined = '';
   @Input('button') button: MButton | undefined = {
     code: 'default'
   };
@@ -138,5 +141,5 @@ export interface MButton {
   class?: string;
   disabled?: boolean;
   default?: boolean;
-  click?: (data: any) => void;
+  click?: (data?: any) => void;
 }

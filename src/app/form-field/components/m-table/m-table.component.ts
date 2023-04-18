@@ -80,7 +80,7 @@ export class MTableComponent implements OnInit {
     console.log('haha');
   }
 
-  onClickAction(action: MButton, data: any) {
+  onClickAction(action: MButton | undefined, data: any | undefined) {
     if (action && action.click)
       action.click(data);
   }

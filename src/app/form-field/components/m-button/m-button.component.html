@@ -1,9 +1,9 @@
 <button
-  class="btn btn-sm {{ button.class }}"
+  class="btn btn-sm {{ button.class }} {{ cssClass }}"
   *ngIf="button"
   (click)="onClick()"
-  [disabled]="button.disabled"
+  [disabled]="button.disabled || disabled"
 >
   <i class="fa fa-{{ button.icon }} {{ button.iconPosition }}"></i>
-  {{ button.text }}
+  {{ button.text }} {{ text }}
 </button>
