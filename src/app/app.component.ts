@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormFieldService } from './form-field/form-field.service';
 import { FormField } from './form-field/form-field';
 import { MButton } from './form-field/components/m-button/m-button.component';
+import { InputBase } from './form-field/components/m-form-controls/m-form-controls.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { MButton } from './form-field/components/m-button/m-button.component';
 })
 export class AppComponent implements OnDestroy {
 
+  check = false;
+  listInput :InputBase<string>[] = [];
   listObjectForm: FormField[] = [
     {
       id: 'a',
@@ -167,6 +170,43 @@ export class AppComponent implements OnDestroy {
 
   openModalCreate() {
     console.log('open modal create');
+    this.check = true;
+    this.listInput = [{
+      key: 'name',
+      name: 'Name',
+      type: 'text',
+      required : true
+    },
+    {
+      key: 'age',
+      name: 'Ages',
+      type: 'number',
+      required : true
+    },
+    {
+      key: 'cccd',
+      name: 'CCCD',
+      type: 'text'
+    },
+    {
+      key: 'phoneNumber',
+      name: 'Phone number',
+      type: 'multiple-select',
+      options:[
+        {key:"1234", value:"1234"},
+        {key:"4567", value:"4567"},
+        {key:"7890", value:"7890"},
+        {key:"4321", value:"4321"},
+      ]
+    },
+    {
+      key: 'gender',
+      name: 'Gender',
+      type: 'text'
+    }
+  ]
+   var btn = document.getElementById("modalbootrap")
+   if(btn)btn.click();
   }
 
   // onAction(obj: FormField) {

@@ -12,6 +12,7 @@ export class MTableComponent implements OnInit {
 
   listHeader: HeaderTable[] | undefined = [];
   search = '';
+  disabled = true;
   // flagMultiSearch: boolean | undefined;
   tableSource: DataSource = {
     t_records: [],

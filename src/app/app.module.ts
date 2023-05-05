@@ -11,9 +11,11 @@ import { FormFieldModule } from './form-field/form-field.module';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,

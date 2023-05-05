@@ -30,6 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MFilterComponent } from './components/m-filter/m-filter.component';
 import { MSearchComponent } from './components/m-search/m-search.component';
 import { MFiltersComponent } from './components/m-filters/m-filters.component';
+import { MFormControlsComponent } from './components/m-form-controls/m-form-controls.component';
 
 @NgModule({
   declarations: [
@@ -49,15 +50,15 @@ import { MFiltersComponent } from './components/m-filters/m-filters.component';
     MDateRangeComponent,
     MFilesComponent,
     MMultipleSelectComponent,
-
     // pipe
     HighlighterPipe,
-
+    MFormControlsComponent,
     //directives
     ClickOutSideDirective,
       MFilterComponent,
       MSearchComponent,
-      MFiltersComponent
+      MFiltersComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -70,7 +71,8 @@ import { MFiltersComponent } from './components/m-filters/m-filters.component';
     MatTooltipModule
   ],
   exports: [
-    FormFieldComponent
+    FormFieldComponent,
+    MFormControlsComponent,
   ],
   providers: [
     MatDatepickerModule,

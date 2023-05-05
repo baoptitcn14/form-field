@@ -13,3 +13,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         background-color: #ffffff;
     }
 }
+.inputInTable>input{
+    background: 0 !important;
+    border: unset;
+}
+.inputInTable>input:focus{
+    border:1px solid #28a745 ;
+    box-shadow: unset;
+}

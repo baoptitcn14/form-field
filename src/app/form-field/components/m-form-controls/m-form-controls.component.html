@@ -1,0 +1,81 @@
+<div class="container">
+ <form class="" [formGroup]="form">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let i of input">
+          <div [ngSwitch]="i.type">
+            <label for="exampleInputEmail1" class="form-label">{{i.name}}</label>
+            <ng-container *ngSwitchCase="'text'">
+              <m-text formControlName="{{i.key}}">
+              </m-text>
+            </ng-container>
+
+            <!-- NUMBER -->
+            <ng-container *ngSwitchCase="'number'">
+              <m-number formControlName="{{i.key}}">
+              </m-number>
+            </ng-container>
+
+            <!-- DATE -->
+            <ng-container *ngSwitchCase="'date'">
+              <m-date formControlName="{{i.key}}">
+              </m-date>
+            </ng-container>
+
+            <!-- DATE RANGE -->
+            <ng-container *ngSwitchCase="'date-range'">
+              <m-date-range formControlName="{{i.key}}">
+              </m-date-range>
+            </ng-container>
+
+            <!-- SELECT -->
+            <ng-container *ngSwitchCase="'select'">
+              <m-select formControlName="{{i.key}}">
+              </m-select>
+            </ng-container>
+
+            <!-- SELECT -->
+            <ng-container *ngSwitchCase="'multiple-select'">
+              <m-multiple-select  formControlName="{{i.key}}">
+              </m-multiple-select>
+            </ng-container>
+
+            <!-- CHECKBOX -->
+            <ng-container *ngSwitchCase="'checkbox'">
+              <m-checkbox formControlName="{{i.key}}">
+              </m-checkbox>
+            </ng-container>
+
+            <!-- GROUP CHECKBOX -->
+            <ng-container *ngSwitchCase="'group_checkbox'">
+              <m-group-checkbox formControlName="{{i.key}}"></m-group-checkbox>
+            </ng-container>
+
+            <!-- GROUP RADIO -->
+            <ng-container *ngSwitchCase="'group_radio'">
+              <m-group-radio formControlName="{{i.key}}"></m-group-radio>
+            </ng-container>
+
+            <!-- FILE -->
+            <ng-container *ngSwitchCase="'file'">
+              <m-files formControlName="{{i.key}}"></m-files>
+            </ng-container>
+
+
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button"  [disabled]="!form.valid" (click)="onSubmit()" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </form>
+</div>

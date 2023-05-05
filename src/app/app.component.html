@@ -5,3 +5,17 @@
     <!-- {{ listObjectForm | json }} -->
 </div>
 
+
+<!-- Button trigger modal -->
+<button style="display: none;" id="modalbootrap" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <ng-container *ngIf="check == true">
+      <app-m-form-controls [input]="listInput"></app-m-form-controls>
+      </ng-container>
+  </div>
+</div>
